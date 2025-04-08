@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import Drawer from "../../../widgets/Drawer/ui/Drawer.vue";
+import { Drawer } from "@widgets/Drawer";
+
+Drawer;
 </script>
 
 <template>
