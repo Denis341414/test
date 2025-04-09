@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { Card } from "@entities/Card";
 import { getMyTasks } from "@features/getMyTasks";
-import { ITask } from "@shared/types";
+import type { ITask } from "@shared/types";
 import { onMounted, ref } from "vue";
-const myTasks = ref<ITask>();
+
+const myTasks = ref<ITask[]>([]);
 
 onMounted(() => {
   myTasks.value = getMyTasks();

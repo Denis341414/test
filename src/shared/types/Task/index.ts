@@ -1,1 +1,1 @@
-export type { ITask } from "./ITask";
+export type { ITask } from "./ITask.ts";
