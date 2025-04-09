@@ -1,0 +1,1 @@
+export { keyMenu } from "./keysMenu";

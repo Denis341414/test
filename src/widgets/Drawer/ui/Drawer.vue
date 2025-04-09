@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Button, Drawer } from "primevue";
 import { ref } from "vue";
+import { MenuBar } from "@widgets/MenuBar";
 
 const visible = ref(false);
 </script>
@@ -10,8 +11,9 @@ const visible = ref(false);
     <Drawer
       v-model:visible="visible"
       header="Menu"
-      class="relative !bg-linear-65 from-red-500 to-pink-600 opacity-[0.9] !shadow-2xl !shadow-cyan-500/50 !p-6"
+      class="relative !bg-linear-65 from-red-500 to-pink-600 opacity-[0.9] !shadow-2xl !shadow-cyan-500/50 !p-6 gap-10 text-3xl"
     >
+      <MenuBar />
     </Drawer>
 
     <Button

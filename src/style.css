@@ -5,8 +5,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  color: rgb(221, 221, 221);
 }
 
 body {
-  background: red;
+  min-height: 100vh;
+  background: linear-gradient(red, rgb(255, 72, 72));
+  background-size: cover;
+  background-repeat: no-repeat;
 }
