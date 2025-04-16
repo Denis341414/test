@@ -6,7 +6,12 @@ export const completedTheTask = async (tasks: ITask[], task: ITask) => {
   await ApiClient<ResponseType>({
     url: `${EndpointsEnum.COMPLETETASKS}`,
     method: "POST",
-    data: task,
+    data: {
+      id: Date.now(), // использовать Date + id пользователя в конкатенации
+      title: task.title,
+      text: task.text,
+      status: task.status,
+    },
   });
   console.log(tasks);
   console.log(task);
