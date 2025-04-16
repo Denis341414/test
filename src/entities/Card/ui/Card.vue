@@ -1,5 +1,15 @@
 <script setup lang="ts">
 import { Button, Card } from "primevue";
+
+const props = defineProps<{
+  text?: string;
+  title?: string;
+  status?: string;
+  executeTask?: () => void;
+  Task?: () => void;
+}>();
+
+// const emit = defineEmits(["delete", "execute"]);
 </script>
 
 <template>
@@ -8,25 +18,28 @@ import { Button, Card } from "primevue";
       style="width: 20rem; overflow: hidden"
       class="!bg-red-800 !p-8 !text-center !rounded-xl"
     >
-      <template #title>Advanced Card</template>
+      <template #title>{{ props.title }}</template>
       <template #subtitle>Card subtitle</template>
       <template #content>
         <p class="m-0">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore
-          sed consequuntur error repudiandae numquam deserunt quisquam repellat
-          libero asperiores earum nam nobis, culpa ratione quam perferendis
-          esse, cupiditate neque quas!
+          {{ props.text }}
         </p>
       </template>
       <template #footer>
-        <div class="flex gap-4 mt-1">
+        <div class="flex gap-4 !mt-6">
           <Button
             label="Удалить"
             severity="secondary"
             outlined
-            class="w-full"
+            type="button"
+            class="w-full !bg-gray-500 opacity-[0.7] !rounded-md"
           />
-          <Button label="Завершить" class="w-full" />
+          <Button
+            @click="executeTask"
+            type="button"
+            label="Завершить"
+            class="w-full !bg-green-400 opacity-[0.7] !rounded-md"
+          />
         </div>
       </template>
     </Card>

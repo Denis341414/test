@@ -1,42 +1,36 @@
 {
   "compilerOptions": {
-    "composite": false,
-    "target": "ES2020",
-    "useDefineForClassFields": true,
-    "module": "ESNext",
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "skipLibCheck": true,
-
-    /* Bundler mode */
-    "moduleResolution": "node",
-    "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "preserve",
-
-    "baseUrl": "src",
+    "target": "ESNext", // Современный JS
+    "module": "ESNext", // Для Vite
+    "moduleResolution": "node", // Стандартное разрешение модулей
+    "strict": true, // Максимальный строгий режим TS
+    "jsx": "preserve", // Для Vue SFC
+    "esModuleInterop": true, // Совместимость с CommonJS
+    "skipLibCheck": true, // Ускоряет сборку (но можно false для строгости)
+    "forceConsistentCasingInFileNames": true, // Чувствительность к регистру в путях
+    "baseUrl": "./src", // Базовый путь для алиасов
     "paths": {
-      "app/*": ["src/app/*"],
-      "pages/*": ["src/pages/*"],
-      "widgets/*": ["src/widgets/*"],
-      "features/*": ["src/features/*"],
-      "entities/*": ["src/entities/*"],
-      "shared/*": ["src/shared/*"]
+      // Алиасы (соответствуют FSD)
+      "@app/*": ["app/*"],
+      "@processes/*": ["processes/*"],
+      "@pages/*": ["pages/*"],
+      "@widgets/*": ["widgets/*"],
+      "@features/*": ["features/*"],
+      "@entities/*": ["entities/*"],
+      "@shared/*": ["shared/*"]
     },
-
-    /* Linting */
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "types": ["vite/client"] // Для работы с Vite
+    // "vueCompilerOptions": {
+    //   // Важно для Vue 3 + TS
+    //   "target": 3, // Vue 3
+    //   "strictTemplates": true // Проверка типов в шаблонах
+    // }
   },
   "include": [
     "src/**/*.ts",
+    "src/**/*.d.ts",
     "src/**/*.tsx",
-    "src/**/*.vue",
-    "src/features/create-lot/model/config",
-    "src/app/stylesheet/index.css"
+    "src/**/*.vue" // Обработка Vue-файлов
   ],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "exclude": ["node_modules", "dist"]
 }

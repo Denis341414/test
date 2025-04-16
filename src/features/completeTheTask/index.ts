@@ -1,0 +1,1 @@
+export { completedTheTask } from "./model";

@@ -1,12 +1,14 @@
 import { ApiClient } from "@shared/api";
 import { EndpointsEnum } from "@shared/api";
+import { ITask } from "@shared/types";
 
 export const getMyTasks = async () => {
-  const { myTaks } = await ApiClient({
-    url: `${EndpointsEnum}`,
+  const myTasks = await ApiClient<ITask[]>({
+    url: `${EndpointsEnum.MYTASKS}`,
     method: "GET",
-    data: {},
+  }).then((res) => {
+    return res.data;
   });
 
-  return { myTaks };
+  return { myTasks };
 };

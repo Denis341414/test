@@ -1,6 +1,6 @@
 export type ITask = {
-  id: number;
+  id: string;
   title: string;
-  content: string;
+  text: string;
   status: string;
 };

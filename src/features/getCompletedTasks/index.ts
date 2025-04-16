@@ -1,0 +1,1 @@
+export { getCompletedTasks } from "./model";

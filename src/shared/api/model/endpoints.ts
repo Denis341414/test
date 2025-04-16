@@ -1,5 +1,6 @@
 export enum EndpointsEnum {
   STATUSOPTIONS = "/statusOptions",
-  TAKS = "/tasks",
+  TASKS = "/tasks",
   MYTASKS = "/mytasks",
+  COMPLETETASKS = "/completedTasks",
 }
