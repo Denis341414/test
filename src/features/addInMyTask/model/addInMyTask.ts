@@ -1,6 +1,6 @@
 import { ApiClient, EndpointsEnum } from "@shared/api";
 import { ITask } from "@shared/types";
-import { validateTask } from "@shared/utils/validate/validate-task";
+import { validateTask } from "@shared/utils";
 
 export const addInMyTask = async (title: string, text: string) => {
   if (validateTask(title, text)) {
