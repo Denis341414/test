@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Button, Card } from "primevue";
+import { useRoute } from "vue-router";
 
 const props = defineProps<{
   text?: string;
@@ -8,6 +9,8 @@ const props = defineProps<{
   executeTask?: () => void;
   Task?: () => void;
 }>();
+
+const router = useRoute();
 
 // const emit = defineEmits(["delete", "execute"]);
 </script>
@@ -28,7 +31,16 @@ const props = defineProps<{
       <template #footer>
         <div class="flex gap-4 !mt-6">
           <Button
+            v-if="router.name !== 'Tasks'"
             label="Удалить"
+            severity="secondary"
+            outlined
+            type="button"
+            class="w-full !bg-gray-500 opacity-[0.7] !rounded-md"
+          />
+          <Button
+            v-else
+            label="Редактировать"
             severity="secondary"
             outlined
             type="button"

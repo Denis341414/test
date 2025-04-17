@@ -1,26 +1,21 @@
 <script setup lang="ts">
 import { Card } from "@entities/Card";
 import { useTasksStore } from "@entities/Tasks/model/tasksStore";
-import { getMyTasks } from "@features/getMyTasks";
 import { storeToRefs } from "pinia";
-import { onMounted } from "vue";
 import { completedTheTask } from "@features/completeTheTask";
-import { getCompletedTasks } from "@features/getCompletedTasks";
+import { ITask } from "@shared/types";
 
 const tasksStore = useTasksStore();
-const { myTasks, completeTheTask } = storeToRefs(tasksStore);
+const { completeTheTask } = storeToRefs(tasksStore);
 
-onMounted(async () => {
-  myTasks.value = (await getMyTasks()).myTasks;
-  completeTheTask.value = (await getCompletedTasks()).data;
-  console.log(completeTheTask.value);
-  console.log(myTasks.value);
-});
+const props = defineProps<{
+  tasks: ITask[];
+}>();
 </script>
 
 <template>
   <Card
-    v-for="el in myTasks"
+    v-for="el in props.tasks"
     :key="el.id"
     :title="el.title"
     :text="el.text"
