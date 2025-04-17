@@ -1,12 +1,17 @@
 <script setup lang="ts">
-import { Drawer } from "@widgets/Drawer";
+import { Drawer, useDrawerStore } from "@widgets/Drawer";
 import { Header } from "@widgets/Header";
 </script>
 
 <template>
   <Header />
   <Drawer />
-  <router-view></router-view>
+  <div
+    class="cont transition-all"
+    :class="useDrawerStore().visible === true ? 'blur-lg' : ''"
+  >
+    <router-view></router-view>
+  </div>
 </template>
 
 <style scoped></style>

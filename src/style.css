@@ -5,12 +5,16 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: rgb(221, 221, 221);
+  color: rgb(188, 188, 188);
 }
 
 body {
   min-height: 100vh;
-  background: linear-gradient(red, rgb(255, 72, 72));
+  background: linear-gradient(rgb(168, 168, 168), rgb(150, 150, 150));
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+html {
+  scrollbar-color: rgb(0, 198, 0) gray;
 }

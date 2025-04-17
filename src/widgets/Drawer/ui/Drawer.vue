@@ -2,8 +2,10 @@
 import { Button, Drawer } from "primevue";
 import { ref } from "vue";
 import { MenuBar } from "@widgets/MenuBar";
+import { useDrawerStore } from "../model";
+import { storeToRefs } from "pinia";
 
-const visible = ref(false);
+const { visible } = storeToRefs(useDrawerStore());
 </script>
 
 <template>
@@ -11,7 +13,7 @@ const visible = ref(false);
     <Drawer
       v-model:visible="visible"
       header="Menu"
-      class="relative !bg-linear-65 from-red-500 to-pink-600 opacity-[0.9] !shadow-2xl !shadow-cyan-500/50 !p-6 gap-10 text-3xl"
+      class="relative !bg-linear-65 from-green-500 to-green-900 opacity-[0.9] !shadow-2xl !shadow-cyan-500/50 !p-6 gap-10 text-3xl"
     >
       <MenuBar />
     </Drawer>
@@ -19,7 +21,7 @@ const visible = ref(false);
     <Button
       icon="pi pi-arrow-right"
       @click="visible = true"
-      class="!bg-red-400 w-20 h-10 !absolute -left-[30px] top-[50vh] rotate-90 !rounded-t-3xl"
+      class="!bg-green-700 w-20 h-10 !absolute -left-[30px] top-[50vh] rotate-90 !rounded-t-3xl"
       label="dasdas"
     >
       <svg

@@ -19,10 +19,10 @@ const router = useRoute();
   <div class="card">
     <Card
       style="width: 20rem; overflow: hidden"
-      class="!bg-red-800 !p-8 !text-center !rounded-xl"
+      class="!bg-green-600 !p-8 !text-center transition-all !shadow-xl/10 !rounded-xl hover:scale-105 hover:!shadow-xl/20 hover:shadow-green-200"
     >
       <template #title>{{ props.title }}</template>
-      <template #subtitle>Card subtitle</template>
+      <!-- <template #subtitle>Card subtitle</template> -->
       <template #content>
         <p class="m-0">
           {{ props.text }}
@@ -36,7 +36,7 @@ const router = useRoute();
             severity="secondary"
             outlined
             type="button"
-            class="w-full !bg-gray-500 opacity-[0.7] !rounded-md"
+            class="w-full !bg-gray-500 opacity-[0.7] !transition-all !rounded-md hover:!bg-gray-700"
           />
           <Button
             v-else
@@ -44,13 +44,13 @@ const router = useRoute();
             severity="secondary"
             outlined
             type="button"
-            class="w-full !bg-gray-500 opacity-[0.7] !rounded-md"
+            class="w-full !bg-gray-500 opacity-[0.7] !transition-all !rounded-md hover:!bg-gray-700"
           />
           <Button
             @click="executeTask"
             type="button"
             label="Завершить"
-            class="w-full !bg-green-400 opacity-[0.7] !rounded-md"
+            class="w-full !bg-green-700 h-10 opacity-[0.7] !transition-all !rounded-md hover:!bg-gray-700"
           />
         </div>
       </template>

@@ -4,7 +4,7 @@ import { keyMenu } from "../model";
 </script>
 
 <template>
-  <PanelMenu :model="keyMenu" class="!gap-4 shadow-sm text-sm">
+  <PanelMenu :model="keyMenu" class="!gap-4 shadow-sm text-sm overflow-hidden">
     <template #item="{ item }" class="">
       <router-link
         v-if="item.route"
@@ -15,7 +15,7 @@ import { keyMenu } from "../model";
       >
         <a
           v-ripple
-          class="flex items-center cursor-pointer text-surface-700 !px-10 !py-2 dark:text-surface-0"
+          class="flex items-center cursor-pointer text-surface-700 !transition-all duration-300 !px-10 !py-2 dark:text-surface-0 hover:bg-gray-500"
           :href="href"
           @click="navigate"
         >

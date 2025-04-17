@@ -2,7 +2,7 @@ export const keyMenu = [
   {
     label: "Home",
     icon: "pi pi-palette",
-    route: "/home",
+    route: "/",
   },
   {
     label: "Settings",
