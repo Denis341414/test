@@ -6,6 +6,8 @@ const props = defineProps<{
   text?: string;
   title?: string;
   status?: string;
+  category?: string;
+  importance?: string;
   executeTask?: () => void;
   Task?: () => void;
 }>();
@@ -16,10 +18,14 @@ const router = useRoute();
 </script>
 
 <template>
+  <div class="text-2xl">{{}}</div>
   <div class="card">
     <Card
       style="width: 20rem; overflow: hidden"
-      class="!bg-green-600 !p-8 !text-center transition-all !shadow-xl/10 !rounded-xl hover:scale-105 hover:!shadow-xl/20 hover:shadow-green-200"
+      class="!bg-green-400 !m-4 !p-8 !text-center transition-all !shadow-xl/10 !rounded-xl hover:scale-105 hover:!shadow-xl/20 hover:shadow-green-200 hover:!m-6"
+      :class="
+        props.importance === 'important' ? '!bg-green-800' : '!bg-green-700'
+      "
     >
       <template #title>{{ props.title }}</template>
       <!-- <template #subtitle>Card subtitle</template> -->

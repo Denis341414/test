@@ -9,7 +9,7 @@ const { visible } = storeToRefs(useDrawerStore());
 </script>
 
 <template>
-  <div class="card flex justify-center">
+  <div class="card flex justify-center fixed">
     <Drawer
       v-model:visible="visible"
       header="Menu"
@@ -21,7 +21,7 @@ const { visible } = storeToRefs(useDrawerStore());
     <Button
       icon="pi pi-arrow-right"
       @click="visible = true"
-      class="!bg-green-700 w-20 h-10 !absolute -left-[30px] top-[50vh] rotate-90 !rounded-t-3xl"
+      class="!bg-green-700 w-20 h-10 !absolute -left-[30px] top-[40vh] rotate-90 !rounded-t-3xl"
       label="dasdas"
     >
       <svg

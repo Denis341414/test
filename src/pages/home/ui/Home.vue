@@ -18,7 +18,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="container !p-10 !grid grid-cols-4 gap-16">
+  <div class="containere !p-10 !grid grid-cols-4">
     <TaskPanel :tasks="myTasks" />
   </div>
 </template>

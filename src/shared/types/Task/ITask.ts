@@ -3,4 +3,5 @@ export type ITask = {
   title: string;
   text: string;
   status: string;
+  importance: string;
 };
