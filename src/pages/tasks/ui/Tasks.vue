@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import FormTask from "@entities/FormTask/ui/FormTask.vue";
+import FormTask from "@features/FormTask/ui/FormTask.vue";
 import { TaskPanel } from "@widgets/TaskPanel";
-import { useTasksStore } from "@entities/Tasks/model/tasksStore";
+import { useTasksStore } from "@features/Tasks/model/tasksStore";
 import { storeToRefs } from "pinia";
 import { onMounted } from "vue";
-import { getCompletedTasks } from "@features/getCompletedTasks";
+import { getCompletedTasks } from "@entities/getCompletedTasks";
 
-import { getAllTasks } from "@features/getAllTasks";
+import { getAllTasks } from "@entities/getAllTasks";
 
 const tasksStore = useTasksStore();
 const { completeTheTask, allTasks } = storeToRefs(tasksStore);
@@ -21,7 +21,7 @@ onMounted(async () => {
 
 <template>
   <div class="container">
-    <FormTask />
+    <FormTask func />
     <div class="container !p-10 !grid grid-cols-4 gap-16">
       <TaskPanel :tasks="allTasks" />
     </div>

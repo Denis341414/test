@@ -1,15 +1,11 @@
 <script setup lang="ts">
-import { addInMyTask } from "@features/addInMyTask";
+import { addInMyTask } from "@entities/addInMyTask";
 import { Textarea, Button } from "primevue";
 import { ref } from "vue";
 
 const title = ref("");
 const text = ref("");
 // const status = ref("не начато");
-
-const props = defineProps<{
-  func: (title: string, text: string) => void;
-}>();
 </script>
 
 <template>
@@ -26,11 +22,10 @@ const props = defineProps<{
       placeholder="Введите текст задачи"
       v-model="text"
     />
-
     <Button
       class="!bg-green-600 !px-8 !py-2 !rounded-md hover:!bg-green-700 !transition"
-      @click="props.func"
-      >{{ label }}</Button
+      @click="addInMyTask(title, text)"
+      >Создать</Button
     >
   </div>
 </template>

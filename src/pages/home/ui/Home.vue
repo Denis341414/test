@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { TaskPanel } from "@widgets/TaskPanel";
-import { useTasksStore } from "@entities/Tasks/model/tasksStore";
-import { getMyTasks } from "@features/getMyTasks";
+import { useTasksStore } from "@features/Tasks/model/tasksStore";
+import { getMyTasks } from "@entities/getMyTasks";
 import { storeToRefs } from "pinia";
 import { onMounted } from "vue";
-import { getCompletedTasks } from "@features/getCompletedTasks";
+import { getCompletedTasks } from "@entities/getCompletedTasks";
 
 const tasksStore = useTasksStore();
 const { myTasks, completeTheTask } = storeToRefs(tasksStore);
@@ -18,7 +18,8 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="containere !p-10 !grid grid-cols-4">
+  <h1 class="text-3xl text-center !p-10">Задачи на сегодня</h1>
+  <div class="container !p-10 !grid grid-cols-4">
     <TaskPanel :tasks="myTasks" />
   </div>
 </template>

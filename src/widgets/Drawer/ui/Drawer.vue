@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { Button, Drawer } from "primevue";
-import { ref } from "vue";
 import { MenuBar } from "@widgets/MenuBar";
 import { useDrawerStore } from "../model";
 import { storeToRefs } from "pinia";

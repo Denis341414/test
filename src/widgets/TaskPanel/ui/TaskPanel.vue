@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { Card } from "@entities/Card";
-import { useTasksStore } from "@entities/Tasks/model/tasksStore";
+import { Card } from "@features/Card";
+import { useTasksStore } from "@features/Tasks/model/tasksStore";
 import { storeToRefs } from "pinia";
-import { completedTheTask } from "@features/completeTheTask";
+import { completedTheTask } from "@entities/completeTheTask";
 import { ITask } from "@shared/types";
-import { onMounted, reactive, ref, watchEffect } from "vue";
+import { reactive, watchEffect } from "vue";
+import { sortTasks } from "../utils";
 
 const tasksStore = useTasksStore();
 const { completeTheTask } = storeToRefs(tasksStore);
@@ -12,23 +13,12 @@ const props = defineProps<{
   tasks: ITask[];
 }>();
 
-const importantTasks = ref<ITask[]>([]);
-const urgentTasks = ref<ITask[]>([]);
-const insignificantTasks = ref<ITask[]>([]);
+const importantTasks = reactive<ITask[]>([]);
+const urgentTasks = reactive<ITask[]>([]);
+const insignificantTasks = reactive<ITask[]>([]);
+
 watchEffect(() => {
-  for (let el of props.tasks) {
-    switch (el.importance) {
-      case "important":
-        importantTasks.value.push(el);
-        break;
-      case "Urgent":
-        urgentTasks.value.push(el);
-        break;
-      case "Insignificant":
-        insignificantTasks.value.push(el);
-        break;
-    }
-  }
+  sortTasks(props.tasks, importantTasks, urgentTasks, insignificantTasks);
 });
 </script>
 
@@ -38,41 +28,54 @@ watchEffect(() => {
     v-if="tasks.length"
   >
     <div class="task-important">
-      <div class="text-2xl">Important</div>
+      <div class="text-3xl font-bold !text-white">Important</div>
       <Card
+        v-if="importantTasks.length"
         v-for="el in importantTasks"
         :key="el.id"
+        :id="el.id"
         :title="el.title"
         :text="el.text"
-        :execute-task="() => completedTheTask(completeTheTask, el)"
+        :execute-task="
+          () => completedTheTask(completeTheTask, el, importantTasks)
+        "
         :category="'Important'"
       />
+      <div v-else class="tasks-empty text-xl w-28 !mt-10">Задач нет</div>
     </div>
     <div class="task-urgent">
-      <div class="text-2xl">Urgent</div>
+      <div class="text-3xl font-bold !text-white">Urgent</div>
       <Card
+        v-if="urgentTasks.length"
         v-for="el in urgentTasks"
         :key="el.id"
+        :id="el.id"
         :title="el.title"
         :text="el.text"
         :importance="el.importance"
-        :execute-task="() => completedTheTask(completeTheTask, el)"
+        :execute-task="() => completedTheTask(completeTheTask, el, urgentTasks)"
       />
+      <div v-else class="tasks-empty text-xl w-28 !mt-10">Задач нет</div>
     </div>
     <div class="task-insignificant">
-      <div class="text-2xl">Insignificant</div>
+      <div class="text-3xl font-bold !text-white">Insignificant</div>
       <Card
+        v-if="insignificantTasks.length"
         v-for="el in insignificantTasks"
         :key="el.id"
+        :id="el.id"
         :title="el.title"
         :text="el.text"
-        :execute-task="() => completedTheTask(completeTheTask, el)"
+        :execute-task="
+          () => completedTheTask(completeTheTask, el, insignificantTasks)
+        "
       />
+      <div v-else class="tasks-empty text-xl w-28 !mt-10">Задач нет</div>
     </div>
   </div>
 
-  <div class="container text-2xl font-bold !text-white" v-else>
-    СПИСОК ЗАДАЧ ПУСТ
+  <div class="container text-xl font-bold !text-white" v-else>
+    Список задач пуст
   </div>
 </template>
 

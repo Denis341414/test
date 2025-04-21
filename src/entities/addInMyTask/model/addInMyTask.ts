@@ -14,7 +14,6 @@ export const addInMyTask = async (title: string, text: string) => {
         title,
         text,
         status: "не выполнено",
-        import
       },
     });
     title = "";
