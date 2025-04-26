@@ -9,11 +9,11 @@ const props = defineProps<{
 
 <template>
   <Button
-    :label="label"
+    :label="props.label"
     severity="secondary"
     outlined
     type="button"
-    @click="func"
+    @click="props.func"
     class="w-full !bg-gray-500 opacity-[0.7] !transition-all !rounded-md hover:!bg-gray-700"
   />
 </template>

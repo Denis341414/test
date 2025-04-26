@@ -1,1 +1,0 @@
-export { deleteTask } from "./delTask";

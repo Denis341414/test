@@ -1,11 +1,15 @@
 <script setup lang="ts">
-import { addInMyTask } from "@entities/addInMyTask";
 import { Textarea, Button } from "primevue";
-import { ref } from "vue";
+import { useFormTaskStore } from "../model";
+import { storeToRefs } from "pinia";
+import radioSelect from "./radio-select.vue";
 
-const title = ref("");
-const text = ref("");
-// const status = ref("не начато");
+const { title, text } = storeToRefs(useFormTaskStore());
+
+const props = defineProps<{
+  func?: () => Promise<void>;
+  lable?: string;
+}>();
 </script>
 
 <template>
@@ -22,10 +26,11 @@ const text = ref("");
       placeholder="Введите текст задачи"
       v-model="text"
     />
+    <radioSelect />
     <Button
       class="!bg-green-600 !px-8 !py-2 !rounded-md hover:!bg-green-700 !transition"
-      @click="addInMyTask(title, text)"
-      >Создать</Button
+      @click="props.func"
+      >{{ props.lable }}</Button
     >
   </div>
 </template>

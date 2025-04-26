@@ -1,11 +1,12 @@
 import { ApiClient, EndpointsEnum } from "@shared/api";
 import { ITask } from "@shared/types";
-import { deleteTask } from "../utils";
+import { deleteTask } from "@entities/deleteTask";
 
 export const completedTheTask = async (
   tasksCompleted: ITask[],
   task: ITask,
-  tasksNow: ITask[]
+  tasksNow: ITask[],
+  allTasks: ITask[]
 ) => {
   try {
     tasksCompleted.push(task);
@@ -20,7 +21,7 @@ export const completedTheTask = async (
       },
     });
     tasksNow.splice(tasksNow.indexOf(task), 1);
-    await deleteTask(task.id);
+    await deleteTask(task, allTasks);
     console.log(task);
   } catch (error) {
     console.log(error);

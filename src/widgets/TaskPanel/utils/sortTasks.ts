@@ -11,12 +11,18 @@ export const sortTasks = (
       case "important":
         impTasks.push(el);
         break;
-      case "Urgent":
+      case "urgent":
         urgTasks.push(el);
         break;
-      case "Insignificant":
+      case "insignificant":
         insignTasks.push(el);
         break;
     }
   }
 };
+// export const sortTasks = (
+//   allTasks: ITask[],
+//   difTasks: ITask[],
+// ) => {
+//   difTasks.push(...allTasks);
+// };

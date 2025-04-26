@@ -1,12 +1,15 @@
 import { ApiClient, EndpointsEnum } from "@shared/api";
 import { ITask } from "@shared/types";
 
-export const deleteTask = async (id: string) => {
+export const deleteTask = async (task: ITask, tasks: ITask[]) => {
   try {
+    console.log(tasks);
     await ApiClient<ResponseType>({
-      url: `${EndpointsEnum.TASKS}/${id}`,
+      url: `${EndpointsEnum.MYTASKS}/${task.id}`,
       method: "DELETE",
     });
+
+    tasks.splice(tasks.indexOf(task), 1);
   } catch (error) {
     console.error("Error:", error);
   }

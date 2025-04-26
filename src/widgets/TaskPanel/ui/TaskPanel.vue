@@ -4,21 +4,27 @@ import { useTasksStore } from "@features/Tasks/model/tasksStore";
 import { storeToRefs } from "pinia";
 import { completedTheTask } from "@entities/completeTheTask";
 import { ITask } from "@shared/types";
-import { reactive, watchEffect } from "vue";
+import { watch, watchEffect } from "vue";
 import { sortTasks } from "../utils";
+import { useTaskPanelStore } from "../model";
+import { deleteTask } from "@entities/deleteTask";
 
 const tasksStore = useTasksStore();
 const { completeTheTask } = storeToRefs(tasksStore);
 const props = defineProps<{
   tasks: ITask[];
 }>();
-
-const importantTasks = reactive<ITask[]>([]);
-const urgentTasks = reactive<ITask[]>([]);
-const insignificantTasks = reactive<ITask[]>([]);
+const { importantTasks, urgentTasks, insignificantTasks } = storeToRefs(
+  useTaskPanelStore()
+);
 
 watchEffect(() => {
-  sortTasks(props.tasks, importantTasks, urgentTasks, insignificantTasks);
+  sortTasks(
+    props.tasks,
+    importantTasks.value,
+    urgentTasks.value,
+    insignificantTasks.value
+  );
 });
 </script>
 
@@ -36,10 +42,13 @@ watchEffect(() => {
         :id="el.id"
         :title="el.title"
         :text="el.text"
+        :importance="el.importance"
+        :tasks="props.tasks"
+        :delete-task="async () => await deleteTask(el, importantTasks)"
         :execute-task="
-          () => completedTheTask(completeTheTask, el, importantTasks)
+          () =>
+            completedTheTask(completeTheTask, el, importantTasks, props.tasks)
         "
-        :category="'Important'"
       />
       <div v-else class="tasks-empty text-xl w-28 !mt-10">Задач нет</div>
     </div>
@@ -53,7 +62,11 @@ watchEffect(() => {
         :title="el.title"
         :text="el.text"
         :importance="el.importance"
-        :execute-task="() => completedTheTask(completeTheTask, el, urgentTasks)"
+        :tasks="props.tasks"
+        :delete-task="async () => await deleteTask(el, urgentTasks)"
+        :execute-task="
+          () => completedTheTask(completeTheTask, el, urgentTasks, props.tasks)
+        "
       />
       <div v-else class="tasks-empty text-xl w-28 !mt-10">Задач нет</div>
     </div>
@@ -66,8 +79,17 @@ watchEffect(() => {
         :id="el.id"
         :title="el.title"
         :text="el.text"
+        :importance="el.importance"
+        :tasks="props.tasks"
+        :delete-task="async () => await deleteTask(el, insignificantTasks)"
         :execute-task="
-          () => completedTheTask(completeTheTask, el, insignificantTasks)
+          () =>
+            completedTheTask(
+              completeTheTask,
+              el,
+              insignificantTasks,
+              props.tasks
+            )
         "
       />
       <div v-else class="tasks-empty text-xl w-28 !mt-10">Задач нет</div>

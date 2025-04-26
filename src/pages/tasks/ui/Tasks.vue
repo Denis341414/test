@@ -7,8 +7,11 @@ import { onMounted } from "vue";
 import { getCompletedTasks } from "@entities/getCompletedTasks";
 
 import { getAllTasks } from "@entities/getAllTasks";
+import { addInMyTask } from "@entities/addInMyTask";
+import { useFormTaskStore } from "@features/FormTask/model";
 
 const tasksStore = useTasksStore();
+const { title, text } = storeToRefs(useFormTaskStore());
 const { completeTheTask, allTasks } = storeToRefs(tasksStore);
 
 onMounted(async () => {
@@ -21,7 +24,7 @@ onMounted(async () => {
 
 <template>
   <div class="container">
-    <FormTask func />
+    <FormTask :func="() => addInMyTask(title, text)" :lable="'Сохранить'" />
     <div class="container !p-10 !grid grid-cols-4 gap-16">
       <TaskPanel :tasks="allTasks" />
     </div>

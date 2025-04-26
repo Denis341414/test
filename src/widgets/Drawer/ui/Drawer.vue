@@ -8,7 +8,7 @@ const { visible } = storeToRefs(useDrawerStore());
 </script>
 
 <template>
-  <div class="card flex justify-center fixed">
+  <div class="card flex justify-center fixed z-999">
     <Drawer
       v-model:visible="visible"
       header="Menu"
