@@ -18,10 +18,11 @@ export const completedTheTask = async (
         title: task.title,
         text: task.text,
         status: task.status,
+        importance: task.importance,
       },
     });
-    tasksNow.splice(tasksNow.indexOf(task), 1);
-    await deleteTask(task, allTasks);
+    // tasksNow.splice(tasksNow.indexOf(task), 1);
+    await deleteTask(task, tasksNow, EndpointsEnum.TASKS);
     console.log(task);
   } catch (error) {
     console.log(error);

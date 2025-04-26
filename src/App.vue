@@ -7,7 +7,7 @@ import { Header } from "@widgets/Header";
   <Header />
   <Drawer />
   <div
-    class="cont transition-all !pt-14"
+    class="cont transition-all !pt-18 !p-8"
     :class="useDrawerStore().visible === true ? 'blur-lg' : ''"
   >
     <router-view></router-view>

@@ -8,6 +8,7 @@ import { watch, watchEffect } from "vue";
 import { sortTasks } from "../utils";
 import { useTaskPanelStore } from "../model";
 import { deleteTask } from "@entities/deleteTask";
+import { EndpointsEnum } from "@shared/api";
 
 const tasksStore = useTasksStore();
 const { completeTheTask } = storeToRefs(tasksStore);
@@ -44,7 +45,10 @@ watchEffect(() => {
         :text="el.text"
         :importance="el.importance"
         :tasks="props.tasks"
-        :delete-task="async () => await deleteTask(el, importantTasks)"
+        :delete-task="
+          async () =>
+            await deleteTask(el, importantTasks, EndpointsEnum.MYTASKS)
+        "
         :execute-task="
           () =>
             completedTheTask(completeTheTask, el, importantTasks, props.tasks)
@@ -63,7 +67,9 @@ watchEffect(() => {
         :text="el.text"
         :importance="el.importance"
         :tasks="props.tasks"
-        :delete-task="async () => await deleteTask(el, urgentTasks)"
+        :delete-task="
+          async () => await deleteTask(el, urgentTasks, EndpointsEnum.MYTASKS)
+        "
         :execute-task="
           () => completedTheTask(completeTheTask, el, urgentTasks, props.tasks)
         "
@@ -81,7 +87,10 @@ watchEffect(() => {
         :text="el.text"
         :importance="el.importance"
         :tasks="props.tasks"
-        :delete-task="async () => await deleteTask(el, insignificantTasks)"
+        :delete-task="
+          async () =>
+            await deleteTask(el, insignificantTasks, EndpointsEnum.MYTASKS)
+        "
         :execute-task="
           () =>
             completedTheTask(
