@@ -10,9 +10,8 @@ import { getAllTasks } from "@entities/getAllTasks";
 import { addInMyTask } from "@entities/addInMyTask";
 import { useFormTaskStore } from "@features/FormTask/model";
 
-const tasksStore = useTasksStore();
-const { title, text } = storeToRefs(useFormTaskStore());
-const { completeTheTask, allTasks } = storeToRefs(tasksStore);
+const { title, text, importanceItem } = storeToRefs(useFormTaskStore());
+const { completeTheTask, allTasks } = storeToRefs(useTasksStore());
 
 onMounted(async () => {
   allTasks.value = (await getAllTasks()).tasks;
@@ -24,7 +23,10 @@ onMounted(async () => {
 
 <template>
   <div class="container">
-    <FormTask :func="() => addInMyTask(title, text)" :lable="'Сохранить'" />
+    <FormTask
+      :func="() => addInMyTask(title, text, importanceItem, allTasks)"
+      :lable="'Сохранить'"
+    />
     <div class="container !p-10 !grid grid-cols-4 gap-16">
       <TaskPanel :tasks="allTasks" />
     </div>

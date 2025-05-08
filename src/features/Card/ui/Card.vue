@@ -3,6 +3,7 @@ import { DialogEdit } from "@features/DialogEdit";
 import { ITask } from "@shared/types";
 import { ButtonCard } from "@shared/ui";
 import { Button, Card } from "primevue";
+import { ref } from "vue";
 import { useRoute } from "vue-router";
 
 const props = defineProps<{
@@ -15,19 +16,18 @@ const props = defineProps<{
   executeTask?: () => void;
   deleteTask?: () => void;
   Task?: () => void;
+  color?: string;
 }>();
-
 const router = useRoute();
+
+const colors = ref(["bg-green-800", "bg-gray-600", "bg-green-700"]);
 </script>
 
 <template>
   <div class="card">
     <Card
       style="width: 20rem; overflow: hidden"
-      class="bg-green-800 !m-4 !p-8 !text-center transition-all !shadow-xl/10 !rounded-xl hover:scale-105 hover:!shadow-xl/20 hover:shadow-green-200 hover:!m-6"
-      :class="
-        props.importance === 'important' ? '!bg-green-800' : '!bg-green-700'
-      "
+      class="!bg-green-700 !m-4 !p-8 !text-center transition-all !shadow-xl/10 !rounded-xl hover:scale-105 hover:!shadow-xl/20 hover:shadow-green-200 hover:!m-6"
     >
       <template #title>
         <p class="text-xl">{{ props.title }}</p>

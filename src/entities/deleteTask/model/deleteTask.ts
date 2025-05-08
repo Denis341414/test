@@ -7,13 +7,12 @@ export const deleteTask = async (
   endpoint: string
 ) => {
   try {
+    tasks.splice(tasks.indexOf(task), 1);
     console.log(tasks);
     await ApiClient<ResponseType>({
       url: `${endpoint}/${task.id}`,
       method: "DELETE",
     });
-
-    tasks.splice(tasks.indexOf(task), 1);
   } catch (error) {
     console.error("Error:", error);
   }

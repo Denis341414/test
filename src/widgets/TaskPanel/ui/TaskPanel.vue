@@ -4,14 +4,14 @@ import { useTasksStore } from "@features/Tasks/model/tasksStore";
 import { storeToRefs } from "pinia";
 import { completedTheTask } from "@entities/completeTheTask";
 import { ITask } from "@shared/types";
-import { watch, watchEffect } from "vue";
+import { onMounted, watch, watchEffect } from "vue";
 import { sortTasks } from "../utils";
 import { useTaskPanelStore } from "../model";
 import { deleteTask } from "@entities/deleteTask";
 import { EndpointsEnum } from "@shared/api";
+import { getAllTasks } from "@entities/getAllTasks";
+import { getCompletedTasks } from "@entities/getCompletedTasks";
 
-const tasksStore = useTasksStore();
-const { completeTheTask } = storeToRefs(tasksStore);
 const props = defineProps<{
   tasks: ITask[];
 }>();
@@ -19,9 +19,21 @@ const { importantTasks, urgentTasks, insignificantTasks } = storeToRefs(
   useTaskPanelStore()
 );
 
+const { completeTheTask, allTasks } = storeToRefs(useTasksStore());
+
+onMounted(async () => {
+  allTasks.value = (await getAllTasks()).tasks;
+  completeTheTask.value = (await getCompletedTasks()).data;
+  console.log(completeTheTask.value);
+  console.log(allTasks.value);
+});
+
 watchEffect(() => {
+  importantTasks.value = [];
+  urgentTasks.value = [];
+  insignificantTasks.value = [];
   sortTasks(
-    props.tasks,
+    allTasks.value,
     importantTasks.value,
     urgentTasks.value,
     insignificantTasks.value
@@ -34,9 +46,11 @@ watchEffect(() => {
     class="container task-categories grid grid-cols-3 gap-[30vw] !p-10"
     v-if="tasks.length"
   >
-    <div class="task-important">
+    <div class="task-important" @dragover.prevent @dragenter.prevent>
       <div class="text-3xl font-bold !text-white">Important</div>
       <Card
+        draggable
+        :color="'bg-gray-800 '"
         v-if="importantTasks.length"
         v-for="el in importantTasks"
         :key="el.id"
@@ -44,14 +58,13 @@ watchEffect(() => {
         :title="el.title"
         :text="el.text"
         :importance="el.importance"
-        :tasks="props.tasks"
+        :tasks="allTasks"
         :delete-task="
           async () =>
             await deleteTask(el, importantTasks, EndpointsEnum.MYTASKS)
         "
         :execute-task="
-          () =>
-            completedTheTask(completeTheTask, el, importantTasks, props.tasks)
+          () => completedTheTask(completeTheTask, el, importantTasks, allTasks)
         "
       />
       <div v-else class="tasks-empty text-xl w-28 !mt-10">Задач нет</div>
@@ -66,12 +79,12 @@ watchEffect(() => {
         :title="el.title"
         :text="el.text"
         :importance="el.importance"
-        :tasks="props.tasks"
+        :tasks="allTasks"
         :delete-task="
           async () => await deleteTask(el, urgentTasks, EndpointsEnum.MYTASKS)
         "
         :execute-task="
-          () => completedTheTask(completeTheTask, el, urgentTasks, props.tasks)
+          () => completedTheTask(completeTheTask, el, urgentTasks, allTasks)
         "
       />
       <div v-else class="tasks-empty text-xl w-28 !mt-10">Задач нет</div>
@@ -86,19 +99,14 @@ watchEffect(() => {
         :title="el.title"
         :text="el.text"
         :importance="el.importance"
-        :tasks="props.tasks"
+        :tasks="allTasks"
         :delete-task="
           async () =>
             await deleteTask(el, insignificantTasks, EndpointsEnum.MYTASKS)
         "
         :execute-task="
           () =>
-            completedTheTask(
-              completeTheTask,
-              el,
-              insignificantTasks,
-              props.tasks
-            )
+            completedTheTask(completeTheTask, el, insignificantTasks, allTasks)
         "
       />
       <div v-else class="tasks-empty text-xl w-28 !mt-10">Задач нет</div>

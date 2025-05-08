@@ -1,8 +1,14 @@
 <script setup lang="ts">
 import { RadioButton } from "primevue";
-import { ref } from "vue";
+import { ref, watch } from "vue";
+import { useFormTaskStore } from "../model";
+import { storeToRefs } from "pinia";
 
-const importanceItem = ref("");
+const { importanceItem } = storeToRefs(useFormTaskStore());
+
+watch(importanceItem, () => {
+  console.log(importanceItem.value);
+});
 </script>
 
 <template>
@@ -13,6 +19,8 @@ const importanceItem = ref("");
         inputId="importance1"
         name="importance"
         value="important"
+        class="!bg-green-500 !w-4 !h-4 rounded-3xl"
+        :class="importanceItem === 'important' ? '!bg-green-700' : ''"
       />
       <label for="ingredient1">important</label>
     </div>
@@ -22,6 +30,8 @@ const importanceItem = ref("");
         inputId="importance2"
         name="importance"
         value="urgent"
+        class="!bg-green-500 !w-4 !h-4 rounded-3xl"
+        :class="importanceItem === 'urgent' ? '!bg-green-700' : ''"
       />
       <label for="ingredient2">urgent</label>
     </div>
@@ -31,6 +41,8 @@ const importanceItem = ref("");
         inputId="importance3"
         name="importance"
         value="insignificant"
+        class="!bg-green-500 !w-4 !h-4 rounded-3xl"
+        :class="importanceItem === 'insignificant' ? '!bg-green-700' : ''"
       />
       <label for="ingredient3">insignificant</label>
     </div>
