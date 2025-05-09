@@ -27,7 +27,12 @@ const colors = ref(["bg-green-800", "bg-gray-600", "bg-green-700"]);
   <div class="card">
     <Card
       style="width: 20rem; overflow: hidden"
-      class="!bg-green-700 !m-4 !p-8 !text-center transition-all !shadow-xl/10 !rounded-xl hover:scale-105 hover:!shadow-xl/20 hover:shadow-green-200 hover:!m-6"
+      class="!m-4 !p-8 !text-center transition-all !shadow-xl/10 !rounded-xl hover:scale-105 hover:!shadow-xl/20 hover:shadow-green-200 hover:!m-6"
+      :class="{
+        '!bg-green-900': props.importance === 'important',
+        '!bg-green-800': props.importance === 'urgent',
+        '!bg-green-700': props.importance === 'insignificant',
+      }"
     >
       <template #title>
         <p class="text-xl">{{ props.title }}</p>

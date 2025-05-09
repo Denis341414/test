@@ -8,46 +8,67 @@
       "importance": "insignificant"
     },
     {
-      "id": "4",
-      "title": "Оптимизировать загрузку",
-      "text": "Уменьшить время загрузки главной страницы",
-      "status": "в процессе",
-      "importance": "important"
-    },
-    {
-      "id": "7",
-      "title": "Исправить адаптивность",
-      "text": "Проблемы с отображением на мобильных",
-      "status": "в процессе",
-      "importance": "important"
-    },
-    {
-      "id": "1746730741763",
-      "title": "d",
-      "text": "d",
-      "status": "не выполнено",
-      "importance": "important"
-    },
-    {
-      "id": "1746731120727",
-      "title": "fasd",
-      "text": "dafs",
-      "status": "не выполнено",
-      "importance": "urgent"
-    },
-    {
-      "id": "1746731125510",
-      "title": "fasd",
-      "text": "dafsfff",
-      "status": "не выполнено",
-      "importance": "urgent"
-    },
-    {
-      "id": "1746731130623",
-      "title": "fasd",
-      "text": "dafsfff",
-      "status": "не выполнено",
+      "id": "8",
+      "title": "Обновить библиотеки",
+      "text": "Обновить версии используемых библиотек",
+      "status": "запланировано",
       "importance": "insignificant"
+    },
+    {
+      "id": "9",
+      "title": "Добавить мультиязычность",
+      "text": "Реализовать поддержку английского языка",
+      "status": "открыто",
+      "importance": "important"
+    },
+    {
+      "id": "10",
+      "title": "Исправить ошибки консоли",
+      "text": "Убрать предупреждения в консоли разработчика",
+      "status": "в процессе",
+      "importance": "insignificant"
+    },
+    {
+      "id": "11",
+      "title": "Реализовать поиск",
+      "text": "Добавить функцию поиска по сайту",
+      "status": "запланировано",
+      "importance": "important"
+    },
+    {
+      "id": "12",
+      "title": "Обновить логотип",
+      "text": "Заменить старый логотип на новый",
+      "status": "открыто",
+      "importance": "insignificant"
+    },
+    {
+      "id": "15",
+      "title": "Оптимизировать изображения",
+      "text": "Сжать изображения для ускорения загрузки",
+      "status": "запланировано",
+      "importance": "insignificant"
+    },
+    {
+      "id": "1746706377120",
+      "title": "11ffffff",
+      "text": "11ffffffff",
+      "status": "не выполнено",
+      "importance": "important"
+    },
+    {
+      "id": "1746706397279",
+      "title": "ggg",
+      "text": "ggg",
+      "status": "не выполнено",
+      "importance": "important"
+    },
+    {
+      "id": "1746734409871",
+      "title": "afdffasdasfasd",
+      "text": "dasg",
+      "status": "не начато",
+      "importance": "urgent"
     }
   ],
   "mytasks": [],
@@ -536,46 +557,39 @@
       "importance": "urgent"
     },
     {
-      "id": "1746731104798",
-      "title": "fffas",
-      "text": "ddd",
+      "id": "1746733915400",
+      "title": "da",
+      "text": "fff",
       "status": "не выполнено",
       "importance": "urgent"
     },
     {
-      "id": "1746731105439",
-      "title": "fffasff",
-      "text": "ddd",
+      "id": "1746733915817",
+      "title": "dafasd",
+      "text": "ffffasd",
       "status": "не выполнено",
       "importance": "urgent"
     },
     {
-      "id": "1746731105816",
-      "title": "afs",
-      "text": "d",
+      "id": "1746733916344",
+      "title": "dafasd",
+      "text": "ffffasd",
       "status": "не выполнено",
       "importance": "urgent"
     },
     {
-      "id": "1746731106217",
-      "title": "afs",
-      "text": "df",
-      "status": "не выполнено",
-      "importance": "urgent"
+      "id": "1746733917507",
+      "title": "Оптимизировать загрузку",
+      "text": "Уменьшить время загрузки главной страницы",
+      "status": "в процессе",
+      "importance": "important"
     },
     {
-      "id": "1746731106715",
-      "title": "afs",
-      "text": "df",
-      "status": "не выполнено",
-      "importance": "urgent"
-    },
-    {
-      "id": "1746731107155",
-      "title": "afs",
-      "text": "df11111",
-      "status": "не выполнено",
-      "importance": "urgent"
+      "id": "1746733917883",
+      "title": "Исправить адаптивность",
+      "text": "Проблемы с отображением на мобильных",
+      "status": "в процессе",
+      "importance": "important"
     }
   ]
 }

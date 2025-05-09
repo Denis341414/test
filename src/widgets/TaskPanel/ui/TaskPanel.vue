@@ -4,7 +4,7 @@ import { useTasksStore } from "@features/Tasks/model/tasksStore";
 import { storeToRefs } from "pinia";
 import { completedTheTask } from "@entities/completeTheTask";
 import { ITask } from "@shared/types";
-import { onMounted, watch, watchEffect } from "vue";
+import { onMounted, watchEffect } from "vue";
 import { sortTasks } from "../utils";
 import { useTaskPanelStore } from "../model";
 import { deleteTask } from "@entities/deleteTask";
@@ -29,22 +29,24 @@ onMounted(async () => {
 });
 
 watchEffect(() => {
-  importantTasks.value = [];
-  urgentTasks.value = [];
-  insignificantTasks.value = [];
-  sortTasks(
-    allTasks.value,
-    importantTasks.value,
-    urgentTasks.value,
-    insignificantTasks.value
-  );
+  setTimeout(() => {
+    importantTasks.value = [];
+    urgentTasks.value = [];
+    insignificantTasks.value = [];
+    sortTasks(
+      allTasks.value,
+      importantTasks.value,
+      urgentTasks.value,
+      insignificantTasks.value
+    );
+  }, 1000);
 });
 </script>
 
 <template>
   <div
     class="container task-categories grid grid-cols-3 gap-[30vw] !p-10"
-    v-if="tasks.length"
+    v-if="props.tasks.length"
   >
     <div class="task-important" @dragover.prevent @dragenter.prevent>
       <div class="text-3xl font-bold !text-white">Important</div>
