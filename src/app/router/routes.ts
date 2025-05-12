@@ -1,3 +1,4 @@
+import SignIn from "@pages/auth/ui/SignIn.vue";
 import Home from "../../pages/home/ui/Home.vue";
 import Tasks from "../../pages/tasks/ui/Tasks.vue";
 
@@ -13,5 +14,10 @@ export const routes = [
     path: "/profile",
     component: () => import("@pages/profile/ui/profile.vue"),
     name: "Profile",
+  },
+  {
+    path: "/signin",
+    component: SignIn,
+    name: "singin",
   },
 ];
