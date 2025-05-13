@@ -3,7 +3,8 @@ import Home from "../../pages/home/ui/Home.vue";
 import Tasks from "../../pages/tasks/ui/Tasks.vue";
 
 export const routes = [
-  { path: "/", component: Home, name: "Home" },
+  { path: "/home", component: Home, name: "Home" },
+  { path: "/:pathMatch(.*)*", name: "Home", component: Home },
   {
     path: "/settings",
     component: () => import("@pages/settings/ui/Settings.vue"),
@@ -18,6 +19,10 @@ export const routes = [
   {
     path: "/signin",
     component: SignIn,
-    name: "singin",
+    name: "signin",
+    children: [
+      { path: "auth", component: () => import("@pages/auth/ui/auth.vue") },
+      { path: "regist", component: () => import("@pages/auth/ui/regist.vue") },
+    ],
   },
 ];

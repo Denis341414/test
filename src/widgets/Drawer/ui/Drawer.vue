@@ -5,7 +5,6 @@ import { useDrawerStore } from "../model";
 import { storeToRefs } from "pinia";
 import ButtonDrawer from "./button-drawer.vue";
 import { SwitchTheme } from "../utils";
-import { ref, watch } from "vue";
 
 const { visible } = storeToRefs(useDrawerStore());
 </script>
