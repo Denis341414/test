@@ -1,1 +1,2 @@
-export { ButtonCard } from "./Button";
+export * from "./Button";
+export * from "./Input";

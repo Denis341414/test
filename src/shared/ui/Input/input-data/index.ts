@@ -1,0 +1,1 @@
+export {default as inputData} from './input-data.vue'

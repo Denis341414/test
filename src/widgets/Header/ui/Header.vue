@@ -7,7 +7,6 @@ const router = useRoute();
 <template>
   <div
     class="header !bg-green-600 header w-full h-16 !text-gray-500 font-bold flex justify-center items-center z-50 border-b-3 text-3xl fixed"
-    v-if="router.name !== 'auth'"
   >
     {{ router.name }}
   </div>

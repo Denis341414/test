@@ -1,4 +1,4 @@
-import SignIn from "@pages/auth/ui/SignIn.vue";
+import SignIn from "@pages/signin/ui/SignIn.vue";
 import Home from "../../pages/home/ui/Home.vue";
 import Tasks from "../../pages/tasks/ui/Tasks.vue";
 
@@ -21,8 +21,18 @@ export const routes = [
     component: SignIn,
     name: "signin",
     children: [
-      { path: "auth", component: () => import("@pages/auth/ui/auth.vue") },
-      { path: "regist", component: () => import("@pages/auth/ui/regist.vue") },
+      {
+        path: "auth",
+        name: "auth",
+        component: () => import("@pages/signin/ui/auth.vue"),
+        meta: { transition: "slide-right" },
+      },
+      {
+        path: "regist",
+        name: "regist",
+        component: () => import("@pages/signin/ui/regist.vue"),
+        meta: { transition: "slide-right" },
+      },
     ],
   },
 ];

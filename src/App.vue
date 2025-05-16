@@ -8,14 +8,33 @@ console.log(router.path);
 </script>
 
 <template>
-  <Header v-if="router.name !== 'signin' || router.path !== '/signin/auth'" />
-  <Drawer v-if="router.name !== 'signin' || router.path !== '/signin/auth'" />
+  <Header v-if="router.name !== 'auth' && router.name !== 'regist'" />
+  <Drawer v-if="router.name !== 'auth' && router.name !== 'regist'" />
   <div
     class="cont transition-all !pt-18 !p-8"
-    :class="useDrawerStore().visible === true ? 'blur-lg' : ''"
+    :class="useDrawerStore().visible === true ? '!blur-sm' : ''"
   >
-    <router-view></router-view>
+    <router-view v-slot="{ Component }">
+      <Transition name="fade" mode="out-in">
+        <component :is="Component" />
+      </Transition>
+    </router-view>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-to,
+.fade-leave-from {
+  opacity: 1;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+</style>
