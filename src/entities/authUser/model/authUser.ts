@@ -5,6 +5,7 @@ export const authUser = async (email: string, password: string, auth: Auth) => {
     await signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
+        const currentUser = auth.currentUser;
       })
       .catch((error) => {
         console.log(error);

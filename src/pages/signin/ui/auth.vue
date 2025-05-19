@@ -4,7 +4,6 @@ import { storeToRefs } from "pinia";
 import { useAuthStore } from "../model";
 import { authUser } from "@entities/authUser";
 import { getAuth } from "firebase/auth";
-import { watch } from "vue";
 
 const { email, password } = storeToRefs(useAuthStore());
 const auth = getAuth();
@@ -19,13 +18,13 @@ const auth = getAuth();
         :lable="'email'"
         :placeholder="'Вводите сюда)'"
         :type="'text'"
-        :data="email"
+        v-model="email"
       />
       <inputData
         :lable="'password'"
         :placeholder="'и сюда)))'"
         :type="'password'"
-        :data="password"
+        v-model="password"
       />
     </div>
 

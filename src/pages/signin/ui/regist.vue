@@ -2,8 +2,12 @@
 import { ButtonSignIn, inputData } from "@shared/ui";
 import { storeToRefs } from "pinia";
 import { useRegistStore } from "../model";
+import { registUser } from "@entities/registUser/model/registUser";
+import { getAuth } from "firebase/auth";
 
 const { email, password, repeatPassword } = storeToRefs(useRegistStore());
+
+const auth = getAuth();
 </script>
 
 <template>
@@ -15,24 +19,27 @@ const { email, password, repeatPassword } = storeToRefs(useRegistStore());
         :lable="'email'"
         :placeholder="'Вводите сюда)'"
         :type="'text'"
-        :data="email"
+        v-model="email"
       />
       <inputData
         :lable="'password'"
         :placeholder="'и сюда)))'"
         :type="'password'"
-        :data="password"
+        v-model="password"
       />
       <inputData
         :lable="'repeat password'"
         :placeholder="'x)'"
         :type="'password'"
-        :data="repeatPassword"
+        v-model="repeatPassword"
       />
     </div>
 
     <div class="buttons flex flex-col">
-      <ButtonSignIn :lable="'Зарегистрироваться'" />
+      <ButtonSignIn
+        :lable="'Зарегистрироваться'"
+        :func="() => registUser(email, password, repeatPassword, auth)"
+      />
       <router-link to="auth">
         <ButtonSignIn :lable="'Вход'" />
       </router-link>
