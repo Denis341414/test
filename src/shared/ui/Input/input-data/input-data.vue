@@ -5,6 +5,7 @@ const props = defineProps<{
   lable?: string;
   placeholder?: string;
   data?: string;
+  type?: string;
 }>();
 </script>
 
@@ -14,7 +15,7 @@ const props = defineProps<{
     :name="props.lable"
     :placeholder="props.placeholder"
     v-model="props.data"
-    type="text"
+    :type="props.type"
     class="!bg-green-500 !rounded-sm w-[110%] !h-[2em] !p-2"
   />
 </template>

@@ -4,7 +4,7 @@ import { Transition } from "vue";
 
 <template>
   <div class="container flex justify-center items-center">
-    <div class="container-signin bg-green-700 w-[20vw] h-[43vh] rounded-xl">
+    <div class="container-signin bg-green-700 w-[20vw] h-[55vh] rounded-xl">
       <router-view v-slot="{ Component }">
         <transition name="fade" mode="out-in">
           <component :is="Component" />
@@ -32,18 +32,21 @@ import { Transition } from "vue";
 @media (max-width: 800px) {
   .container-signin {
     width: 40vw;
+    height: 50vh;
   }
 }
 
 @media (max-width: 600px) {
   .container-signin {
-    width: 50vw;
+    width: 70vw;
+    height: 40vh;
   }
 }
 
 @media (max-width: 400px) {
   .container-signin {
     width: 100vw;
+    height: 60vh;
   }
 }
 </style>
