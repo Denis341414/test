@@ -1,3 +1,4 @@
+import { validateEmailAndPassword } from "@shared/utils";
 import { Auth, createUserWithEmailAndPassword } from "firebase/auth";
 
 export const registUser = async (
@@ -8,14 +9,17 @@ export const registUser = async (
 ) => {
   try {
     if (password !== repPassword) {
+      alert("Пароли не совпадают");
       throw new Error("ERROR: пароли не совпадают");
     }
-    await createUserWithEmailAndPassword(auth, email, password).then(
-      (userCredential) => {
+    await createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
         const user = userCredential.user;
         console.log(user);
-      }
-    );
+      })
+      .catch((error) => {
+        alert(validateEmailAndPassword(error.code));
+      });
   } catch (error) {
     console.log("ERROR :", error);
     throw error;

@@ -1,0 +1,1 @@
+export { useUserProfileStore } from "./model";

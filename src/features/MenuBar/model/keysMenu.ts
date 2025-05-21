@@ -1,3 +1,5 @@
+import { getAuth } from "firebase/auth";
+
 export const keyMenu = [
   {
     label: "Home",
@@ -22,6 +24,11 @@ export const keyMenu = [
   {
     label: "Logout",
     icon: "pi pi-palette",
-    route: "/profile",
+    route: "/signin/auth",
+    command: async () => {
+      const auth = getAuth();
+      await auth.signOut();
+      window.location.reload();
+    },
   },
 ];

@@ -3,11 +3,24 @@ import { ButtonSignIn, inputData } from "@shared/ui";
 import { storeToRefs } from "pinia";
 import { useRegistStore } from "../model";
 import { registUser } from "@entities/registUser/model/registUser";
-import { getAuth } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { useUserProfileStore } from "@entities/userProfile";
+import { useRouter } from "vue-router";
 
 const { email, password, repeatPassword } = storeToRefs(useRegistStore());
-
+const { userCurrent, userUid } = storeToRefs(useUserProfileStore());
+const router = useRouter();
 const auth = getAuth();
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    userCurrent.value = user;
+    userUid.value = user.uid;
+    console.log(userCurrent);
+    router.push("/home");
+  } else {
+  }
+});
 </script>
 
 <template>

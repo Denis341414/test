@@ -1,12 +1,15 @@
+import { useTasksStore } from "@entities/Tasks/model/tasksStore";
 import { ApiClient, EndpointsEnum } from "@shared/api";
 import { ITask } from "@shared/types";
 import { validateTask } from "@shared/utils";
-
 export const addInMyTask = async (
   title: string,
   text: string,
   importance: string,
-  tasks: ITask[]
+  uid: string,
+  imptasks: ITask[],
+  urgtasks: ITask[],
+  instasks: ITask[]
 ) => {
   if (validateTask(title, text)) {
     console.log(validateTask(title, text));
@@ -20,15 +23,24 @@ export const addInMyTask = async (
         text: text,
         status: "не выполнено",
         importance: importance,
+        uid: uid,
       },
     }).then((response) => {
       return response.data;
     });
+
+    switch (importance) {
+      case "important":
+        imptasks.push(data);
+        break;
+      case "urgent":
+        urgtasks.push(data);
+        break;
+      case "insignificant":
+        instasks.push(data);
+        break;
+    }
     title = "";
     text = "";
-
-    tasks.push(data);
-    console.log(tasks);
-    console.log(data);
   }
 };

@@ -4,4 +4,5 @@ export type ITask = {
   text: string;
   status: string;
   importance: string;
+  uid?: string;
 };

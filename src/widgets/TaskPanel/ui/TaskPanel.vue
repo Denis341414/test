@@ -1,16 +1,14 @@
 <script setup lang="ts">
 import { Card } from "@features/Card";
-import { useTasksStore } from "@features/Tasks/model/tasksStore";
+import { useTasksStore } from "@entities/Tasks/model/tasksStore";
 import { storeToRefs } from "pinia";
 import { completedTheTask } from "@entities/completeTheTask";
 import { ITask } from "@shared/types";
-import { onMounted, watchEffect } from "vue";
+import { watchEffect } from "vue";
 import { sortTasks } from "../utils";
 import { useTaskPanelStore } from "../model";
 import { deleteTask } from "@entities/deleteTask";
 import { EndpointsEnum } from "@shared/api";
-import { getAllTasks } from "@entities/getAllTasks";
-import { getCompletedTasks } from "@entities/getCompletedTasks";
 
 const props = defineProps<{
   tasks: ITask[];
@@ -20,13 +18,6 @@ const { importantTasks, urgentTasks, insignificantTasks } = storeToRefs(
 );
 
 const { completeTheTask, allTasks } = storeToRefs(useTasksStore());
-
-onMounted(async () => {
-  allTasks.value = (await getAllTasks()).tasks;
-  completeTheTask.value = (await getCompletedTasks()).data;
-  console.log(completeTheTask.value);
-  console.log(allTasks.value);
-});
 
 watchEffect(() => {
   setTimeout(() => {
@@ -39,7 +30,7 @@ watchEffect(() => {
       urgentTasks.value,
       insignificantTasks.value
     );
-  }, 1000);
+  }, 100);
 });
 </script>
 

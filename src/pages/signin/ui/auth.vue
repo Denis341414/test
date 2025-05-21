@@ -4,9 +4,23 @@ import { storeToRefs } from "pinia";
 import { useAuthStore } from "../model";
 import { authUser } from "@entities/authUser";
 import { getAuth } from "firebase/auth";
+import { useUserProfileStore } from "@entities/userProfile";
+import { onAuthStateChanged } from "firebase/auth";
+import { useRouter } from "vue-router";
 
 const { email, password } = storeToRefs(useAuthStore());
+const { userCurrent, userUid } = storeToRefs(useUserProfileStore());
+const router = useRouter();
 const auth = getAuth();
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    userCurrent.value = user;
+    userUid.value = user.uid;
+    console.log(userCurrent);
+    router.push("/home");
+  }
+});
 </script>
 
 <template>

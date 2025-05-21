@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import FormTask from "@features/FormTask/ui/FormTask.vue";
-import { TaskPanel } from "@widgets/TaskPanel";
-import { useTasksStore } from "@features/Tasks/model/tasksStore";
+import { TaskPanel, useTaskPanelStore } from "@widgets/TaskPanel";
+import { useTasksStore } from "@entities/Tasks/model/tasksStore";
 import { storeToRefs } from "pinia";
 import { onMounted } from "vue";
 import { getCompletedTasks } from "@entities/getCompletedTasks";
@@ -9,9 +9,15 @@ import { getCompletedTasks } from "@entities/getCompletedTasks";
 import { getAllTasks } from "@entities/getAllTasks";
 import { addInMyTask } from "@entities/addInMyTask";
 import { useFormTaskStore } from "@features/FormTask/model";
+import { useUserProfileStore } from "@entities/userProfile";
 
 const { title, text, importanceItem } = storeToRefs(useFormTaskStore());
 const { completeTheTask, allTasks } = storeToRefs(useTasksStore());
+const { importantTasks, urgentTasks, insignificantTasks } = storeToRefs(
+  useTaskPanelStore()
+);
+
+const { userUid } = storeToRefs(useUserProfileStore());
 
 onMounted(async () => {
   allTasks.value = (await getAllTasks()).tasks;
@@ -19,12 +25,28 @@ onMounted(async () => {
   console.log(completeTheTask.value);
   console.log(allTasks.value);
 });
+
+const test = async () => {
+  await addInMyTask(
+    title.value,
+    text.value,
+    importanceItem.value,
+    userUid.value,
+    importantTasks.value,
+    urgentTasks.value,
+    insignificantTasks.value
+  );
+};
 </script>
 
 <template>
   <div class="container">
     <FormTask
-      :func="() => addInMyTask(title, text, importanceItem, allTasks)"
+      :func="
+        () => {
+          test();
+        }
+      "
       :lable="'Сохранить'"
     />
     <div class="container !p-10 !grid grid-cols-4 gap-16">

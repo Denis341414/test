@@ -1,1 +1,1 @@
-export { validateTask } from "./validate";
+export * from "./validate";

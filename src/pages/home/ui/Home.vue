@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { TaskPanel } from "@widgets/TaskPanel";
-import { useTasksStore } from "@features/Tasks/model/tasksStore";
+import { useTasksStore } from "@entities/Tasks/model/tasksStore";
 import { getMyTasks } from "@entities/getMyTasks";
 import { storeToRefs } from "pinia";
 import { onMounted } from "vue";

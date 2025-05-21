@@ -16,7 +16,9 @@ console.log(router.path);
   >
     <router-view v-slot="{ Component }">
       <Transition name="fade" mode="out-in">
-        <component :is="Component" />
+        <div>
+          <component :is="Component" />
+        </div>
       </Transition>
     </router-view>
   </div>

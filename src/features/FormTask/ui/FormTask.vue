@@ -7,7 +7,7 @@ import radioSelect from "./radio-select.vue";
 const { title, text } = storeToRefs(useFormTaskStore());
 
 const props = defineProps<{
-  func?: () => Promise<void>;
+  func?: () => void;
   lable?: string;
 }>();
 </script>
