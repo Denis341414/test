@@ -3,7 +3,7 @@ import { Transition } from "vue";
 </script>
 
 <template>
-  <div class="container flex justify-center items-center">
+  <div class="flex justify-center items-center">
     <div class="container-signin bg-green-700 w-[20vw] h-[55vh] rounded-xl">
       <router-view v-slot="{ Component }">
         <transition name="fade" mode="out-in">
@@ -19,6 +19,7 @@ import { Transition } from "vue";
 .fade-leave-active {
   transition: opacity 0.3s;
 }
+
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
