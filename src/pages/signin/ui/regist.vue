@@ -7,7 +7,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useUserProfileStore } from "@entities/userProfile";
 import { useRouter } from "vue-router";
 
-const { email, password, repeatPassword } = storeToRefs(useRegistStore());
+const { email, password, repeatPassword, name } = storeToRefs(useRegistStore());
 const { userCurrent } = storeToRefs(useUserProfileStore());
 const router = useRouter();
 const auth = getAuth();
@@ -29,6 +29,12 @@ onAuthStateChanged(auth, (user) => {
     class="cont-auth flex flex-col justify-center items-center h-[100%] !p-8 gap-6"
   >
     <div class="inputs flex justify-center items-center flex-col gap-2">
+      <inputData
+        :lable="'name'"
+        :placeholder="'Как вас зовут?'"
+        :type="'text'"
+        v-model="name"
+      />
       <inputData
         :lable="'email'"
         :placeholder="'Вводите сюда)'"
@@ -52,7 +58,7 @@ onAuthStateChanged(auth, (user) => {
     <div class="buttons flex flex-col">
       <ButtonSignIn
         :lable="'Зарегистрироваться'"
-        :func="() => registUser(email, password, repeatPassword, auth)"
+        :func="() => registUser(email, password, repeatPassword, name, auth)"
       />
       <router-link to="auth">
         <ButtonSignIn :lable="'Вход'" />

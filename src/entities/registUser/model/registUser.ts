@@ -1,10 +1,16 @@
+import { UserCurrent } from "@shared/types";
 import { validateEmailAndPassword } from "@shared/utils";
-import { Auth, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  Auth,
+  createUserWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
 
 export const registUser = async (
   email: string,
   password: string,
   repPassword: string,
+  name: string,
   auth: Auth
 ) => {
   try {
@@ -12,14 +18,10 @@ export const registUser = async (
       alert("Пароли не совпадают");
       throw new Error("ERROR: пароли не совпадают");
     }
-    await createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        console.log(user);
-      })
-      .catch((error) => {
-        alert(validateEmailAndPassword(error.code));
-      });
+    const user = await createUserWithEmailAndPassword(auth, email, password);
+    await updateProfile(user.user, {
+      displayName: name,
+    });
   } catch (error) {
     console.log("ERROR :", error);
     throw error;

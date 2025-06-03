@@ -1,4 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useUserProfileStore } from "@entities/userProfile";
+import { storeToRefs } from "pinia";
+const { userCurrent } = storeToRefs(useUserProfileStore());
+</script>
 
 <template>
   <div class="container !p-20 flex gap-4">
@@ -21,10 +25,10 @@
         </svg>
       </div>
       <div class="card-user-inf">
-        <div class="card-user-name">John Doe</div>
+        <div class="card-user-name">{{ userCurrent.displayName }}</div>
         <div class="card-user-position">Web Developer</div>
         <div class="card-user-phone">08123456789</div>
-        <div class="card-user-email">john@gmail.com</div>
+        <div class="card-user-email">{{ userCurrent.email }}</div>
       </div>
     </div>
     <div

@@ -5,6 +5,7 @@ export const useRegistStore = defineStore("regist", () => {
   const email = ref("");
   const password = ref("");
   const repeatPassword = ref("");
+  const name = ref("");
 
-  return { email, password, repeatPassword };
+  return { email, password, repeatPassword, name };
 });
