@@ -9,14 +9,15 @@ import { onAuthStateChanged } from "firebase/auth";
 import { useRouter } from "vue-router";
 
 const { email, password } = storeToRefs(useAuthStore());
-const { userCurrent, userUid } = storeToRefs(useUserProfileStore());
+const { userCurrent } = storeToRefs(useUserProfileStore());
 const router = useRouter();
 const auth = getAuth();
 
 onAuthStateChanged(auth, (user) => {
   if (user) {
     userCurrent.value = user;
-    userUid.value = user.uid;
+    localStorage.setItem("userCurrent", JSON.stringify(user));
+    localStorage.setItem("userUID", user.uid);
     console.log(userCurrent);
     router.push("/home");
   }

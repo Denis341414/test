@@ -1,9 +1,20 @@
+import { localStorageKeys } from "@pages/signin/keys";
 import { defineStore } from "pinia";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 
 export const useUserProfileStore = defineStore("userProfile", () => {
-  const userCurrent = ref();
-  const userUid = ref();
+  const userCurrent = computed({
+    get() {
+      if (localStorage.getItem(localStorageKeys.USERCURRENT)) {
+        const user = String(localStorage.getItem(localStorageKeys.USERCURRENT));
+        return JSON.parse(user);
+      }
+    },
 
-  return { userCurrent, userUid };
+    set(newValue) {
+      return newValue;
+    },
+  });
+
+  return { userCurrent };
 });
