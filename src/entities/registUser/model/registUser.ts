@@ -22,6 +22,7 @@ export const registUser = async (
     await updateProfile(user.user, {
       displayName: name,
     });
+    localStorage.setItem("username", String(user.user.displayName));
   } catch (error) {
     console.log("ERROR :", error);
     throw error;

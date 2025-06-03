@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useUserProfileStore } from "@entities/userProfile";
 import { storeToRefs } from "pinia";
-const { userCurrent } = storeToRefs(useUserProfileStore());
+const { userCurrent, username } = storeToRefs(useUserProfileStore());
 </script>
 
 <template>
@@ -25,7 +25,7 @@ const { userCurrent } = storeToRefs(useUserProfileStore());
         </svg>
       </div>
       <div class="card-user-inf">
-        <div class="card-user-name">{{ userCurrent.displayName }}</div>
+        <div class="card-user-name">{{ username }}</div>
         <div class="card-user-position">Web Developer</div>
         <div class="card-user-phone">08123456789</div>
         <div class="card-user-email">{{ userCurrent.email }}</div>

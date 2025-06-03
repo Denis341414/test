@@ -16,6 +16,17 @@ export const useUserProfileStore = defineStore("userProfile", () => {
       return newValue;
     },
   });
+  const username = computed({
+    get() {
+      if (localStorage.getItem("username")) {
+        const name = localStorage.getItem("username");
+        return name;
+      }
+    },
+    set(newValue) {
+      return newValue;
+    },
+  });
 
-  return { userCurrent };
+  return { userCurrent, username };
 });
