@@ -29,8 +29,7 @@ export const keyMenu = [
     icon: "pi pi-palette",
     route: "/signin/auth",
     command: async () => {
-      localStorage.removeItem("userEmail");
-      localStorage.removeItem("userUID");
+      localStorage.clear();
       const auth = getAuth();
       await auth.signOut();
       window.location.reload();

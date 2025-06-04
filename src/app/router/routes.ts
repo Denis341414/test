@@ -11,7 +11,11 @@ export const routes = [
     component: () => import("@pages/settings/ui/Settings.vue"),
     name: "Settings",
   },
-  { path: "/tasks", component: Tasks, name: "Tasks" },
+  {
+    path: "/tasks",
+    component: () => import("@pages/tasks/ui/Tasks.vue"),
+    name: "Tasks",
+  },
   {
     path: "/profile",
     component: Profile,

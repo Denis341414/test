@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { Drawer, useDrawerStore } from "@widgets/Drawer";
 import { Header } from "@widgets/Header";
-import { useRoute, useRouter } from "vue-router";
+
+import { useRoute } from "vue-router";
 
 const router = useRoute();
 console.log(router.path);
