@@ -18,7 +18,7 @@ onAuthStateChanged(auth, (user) => {
     localStorage.setItem("userCurrent", JSON.stringify(user));
     localStorage.setItem("userUID", user.uid);
     console.log(userCurrent);
-    router.push("/home");
+    router.push("/profile");
   } else {
   }
 });
