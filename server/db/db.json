@@ -1,83 +1,51 @@
 {
   "tasks": [
     {
-      "id": "1",
+      "id": "1749131937728",
+      "title": "fasff",
+      "text": "asfff",
+      "status": "не выполнено",
+      "importance": "urgent",
+      "uid": "BJbOcBBi0mcLYYkuLUe6KANRgGi2"
+    },
+    {
+      "id": "1749131942625",
+      "title": "fasff",
+      "text": "asfff",
+      "status": "не выполнено",
+      "importance": "insignificant",
+      "uid": "BJbOcBBi0mcLYYkuLUe6KANRgGi2"
+    }
+  ],
+  "mytasks": [],
+  "completedTasks": [
+    {
+      "id": "1749131504979",
       "title": "Обновить favicon",
       "text": "Заменить иконку в браузере",
       "status": "в процессе",
       "importance": "insignificant"
     },
     {
-      "id": "8",
-      "title": "Обновить библиотеки",
-      "text": "Обновить версии используемых библиотек",
-      "status": "запланировано",
-      "importance": "insignificant"
-    },
-    {
-      "id": "9",
-      "title": "Добавить мультиязычность",
-      "text": "Реализовать поддержку английского языка",
-      "status": "открыто",
-      "importance": "important"
-    },
-    {
-      "id": "10",
-      "title": "Исправить ошибки консоли",
-      "text": "Убрать предупреждения в консоли разработчика",
+      "id": "1749131926492",
+      "title": "Обновить favicon",
+      "text": "Заменить иконку в браузере",
       "status": "в процессе",
       "importance": "insignificant"
     },
     {
-      "id": "11",
-      "title": "Реализовать поиск",
-      "text": "Добавить функцию поиска по сайту",
-      "status": "запланировано",
-      "importance": "important"
-    },
-    {
-      "id": "12",
-      "title": "Обновить логотип",
-      "text": "Заменить старый логотип на новый",
-      "status": "открыто",
-      "importance": "insignificant"
-    },
-    {
-      "id": "15",
-      "title": "Оптимизировать изображения",
-      "text": "Сжать изображения для ускорения загрузки",
-      "status": "запланировано",
-      "importance": "insignificant"
-    },
-    {
-      "id": "1746706377120",
-      "title": "11ffffff",
-      "text": "11ffffffff",
+      "id": "1749131946411",
+      "title": "afsdasgf",
+      "text": "asddddddddd",
       "status": "не выполнено",
       "importance": "important"
     },
     {
-      "id": "1746706397279",
-      "title": "ggg",
-      "text": "ggg",
+      "id": "1749131947958",
+      "title": "afsdasgf",
+      "text": "asdddddddddfasd",
       "status": "не выполнено",
       "importance": "important"
-    },
-    {
-      "id": "1747744499082",
-      "title": "fadafsd",
-      "text": "dasasffasd",
-      "status": "не выполнено",
-      "importance": "important"
-    },
-    {
-      "id": "1747822249587",
-      "title": "f",
-      "text": "f",
-      "status": "не выполнено",
-      "importance": "urgent"
     }
-  ],
-  "mytasks": [],
-  "completedTasks": []
+  ]
 }

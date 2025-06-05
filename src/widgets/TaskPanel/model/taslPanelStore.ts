@@ -1,11 +1,11 @@
 import { defineStore } from "pinia";
-import { reactive } from "vue";
+import { reactive, ref } from "vue";
 import { ITask } from "@shared/types";
 
 export const useTaskPanelStore = defineStore("", () => {
-  const importantTasks = reactive<ITask[]>([]);
-  const urgentTasks = reactive<ITask[]>([]);
-  const insignificantTasks = reactive<ITask[]>([]);
+  const importantTasks = ref<ITask[]>([]);
+  const urgentTasks = ref<ITask[]>([]);
+  const insignificantTasks = ref<ITask[]>([]);
 
   return { importantTasks, urgentTasks, insignificantTasks };
 });

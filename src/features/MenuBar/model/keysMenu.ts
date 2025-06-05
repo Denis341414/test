@@ -15,9 +15,7 @@ export const keyMenu = [
     label: "Tasks",
     icon: "pi pi-palette",
     route: "/tasks",
-    command: () => {
-      window.location.reload();
-    },
+    command: () => {},
   },
   {
     label: "Profile",

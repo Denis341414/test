@@ -17,7 +17,7 @@ const { importantTasks, urgentTasks, insignificantTasks } = storeToRefs(
   useTaskPanelStore()
 );
 
-const { userUid } = storeToRefs(useUserProfileStore());
+const { userCurrent } = storeToRefs(useUserProfileStore());
 
 onMounted(async () => {
   allTasks.value = (await getAllTasks()).tasks;
@@ -31,7 +31,7 @@ const test = async () => {
     title.value,
     text.value,
     importanceItem.value,
-    userUid.value,
+    userCurrent.value.uid,
     importantTasks.value,
     urgentTasks.value,
     insignificantTasks.value

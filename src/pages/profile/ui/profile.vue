@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useUserProfileStore } from "@entities/userProfile";
 import { storeToRefs } from "pinia";
-const { userCurrent, username } = storeToRefs(useUserProfileStore());
+const { userCurrent } = storeToRefs(useUserProfileStore());
 </script>
 
 <template>
