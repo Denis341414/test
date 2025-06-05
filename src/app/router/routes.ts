@@ -1,6 +1,5 @@
 import SignIn from "@pages/signin/ui/SignIn.vue";
 import Home from "../../pages/home/ui/Home.vue";
-import Tasks from "../../pages/tasks/ui/Tasks.vue";
 import Profile from "@pages/profile/ui/profile.vue";
 
 export const routes = [
