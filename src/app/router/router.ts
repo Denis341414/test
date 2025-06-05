@@ -7,18 +7,30 @@ export const router = createRouter({
   routes: routes,
 });
 
-router.beforeEach(async (to, from, next) => {
+router.beforeEach(async (to) => {
   const auth = getAuth();
 
-  const user = await new Promise((resolve) => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      unsubscribe();
-      resolve(user);
+  try {
+    const user = await new Promise((resolve) => {
+      const unsubscribe = onAuthStateChanged(auth, (user) => {
+        unsubscribe();
+        resolve(user);
+      });
     });
-  });
 
-  if (!user && to.name !== "auth") {
-    return next({ name: "auth" });
+    const isAuthPage = ["auth", "regist"].includes(to.name as string);
+
+    if (!user && !isAuthPage) {
+      return { name: "auth" };
+    }
+
+    if (user && isAuthPage) {
+      return { name: "home" };
+    }
+
+    return true;
+  } catch (error) {
+    console.error("Auth check failed:", error);
+    return { name: "auth" };
   }
-  return next();
 });
