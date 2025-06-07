@@ -21,7 +21,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <h1 class="text-3xl text-center !p-10">Задачи на сегодня</h1>
+  <h1 class="text-3xl text-center !p-10 !text-gray-500">Задачи на сегодня</h1>
   <div class="container !p-10 !grid grid-cols-4">
     <TaskPanel :tasks="myTasks" />
   </div>

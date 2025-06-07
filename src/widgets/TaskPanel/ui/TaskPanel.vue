@@ -40,7 +40,7 @@ watchEffect(() => {
     v-if="props.tasks.length"
   >
     <div class="task-important" @dragover.prevent @dragenter.prevent>
-      <div class="text-3xl font-bold !text-white">Important</div>
+      <div class="text-3xl font-bold !text-gray-500">Important</div>
       <Card
         draggable
         :color="'bg-gray-800 '"
@@ -63,7 +63,7 @@ watchEffect(() => {
       <div v-else class="tasks-empty text-xl w-28 !mt-10">Задач нет</div>
     </div>
     <div class="task-urgent">
-      <div class="text-3xl font-bold !text-white">Urgent</div>
+      <div class="text-3xl font-bold !text-gray-500">Urgent</div>
       <Card
         v-if="urgentTasks.length"
         v-for="el in urgentTasks"
@@ -83,7 +83,7 @@ watchEffect(() => {
       <div v-else class="tasks-empty text-xl w-28 !mt-10">Задач нет</div>
     </div>
     <div class="task-insignificant">
-      <div class="text-3xl font-bold !text-white">Insignificant</div>
+      <div class="text-3xl font-bold !text-gray-500">Insignificant</div>
       <Card
         v-if="insignificantTasks.length"
         v-for="el in insignificantTasks"
