@@ -10,7 +10,7 @@ const { visible } = storeToRefs(useDrawerStore());
   <Button
     icon="pi pi-arrow-right"
     @click="visible = true"
-    class="btn-drawer !bg-green-600 flex justify-center items-center w-20 h-10 !absolute -left-[30px] top-[40vh] rotate-90 !rounded-t-3xl"
+    class="btn-drawer !bg-green-600 flex justify-center items-center w-20 h-10 !absolute -left-[30px] top-[40vh] rotate-90 !rounded-t-3xl !transition-all hover:w-22"
     label="dasdas"
   >
     <svg

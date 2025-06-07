@@ -19,7 +19,7 @@ const { visible } = storeToRefs(useDrawerStore());
       <MenuBar />
       <Button
         @click="SwitchTheme"
-        class="flex w-full !justify-start !border-4 !mt-6 !border items-center cursor-pointer text-surface-700 !transition-all duration-300 !px-10 !py-2 dark:text-surface-0 hover:!bg-gray-700"
+        class="flex w-full !justify-start !border-4 !mt-6 items-center cursor-pointer text-surface-700 !transition-all duration-300 !px-10 !py-2 dark:text-surface-0 hover:!bg-gray-700"
       >
         Switch Theme
       </Button>
