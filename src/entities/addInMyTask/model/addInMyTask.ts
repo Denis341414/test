@@ -23,7 +23,7 @@ export const addInMyTask = async (
         text: text,
         status: "не выполнено",
         importance: importance,
-        uid: uid,
+        uidUser: uid,
       },
     }).then((response) => {
       return response.data;

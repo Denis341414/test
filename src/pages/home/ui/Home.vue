@@ -16,6 +16,7 @@ onMounted(async () => {
   completeTheTask.value = (await getCompletedTasks()).data;
   console.log(completeTheTask.value);
   console.log(myTasks.value);
+  console.log(await getMyTasks(userCurrent.value.uid));
 });
 </script>
 

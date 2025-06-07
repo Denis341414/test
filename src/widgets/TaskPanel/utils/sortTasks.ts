@@ -19,7 +19,6 @@ export const sortTasks = (
         break;
     }
   }
-
   console.log(allTasks);
   console.log(impTasks);
   console.log(urgTasks);
