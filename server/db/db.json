@@ -15,14 +15,6 @@
       "status": "не выполнено",
       "importance": "insignificant",
       "uid": "BJbOcBBi0mcLYYkuLUe6KANRgGi2"
-    },
-    {
-      "id": "1749238974772",
-      "title": "dasfff",
-      "text": "dasffff",
-      "status": "не выполнено",
-      "importance": "urgent",
-      "uidUser": "BJbOcBBi0mcLYYkuLUe6KANRgGi2"
     }
   ],
   "mytasks": [],
@@ -54,6 +46,20 @@
       "text": "asdddddddddfasd",
       "status": "не выполнено",
       "importance": "important"
+    },
+    {
+      "id": "1749295511861",
+      "title": "asfdgdfdasf",
+      "text": "asfdfdfdf",
+      "status": "не выполнено",
+      "importance": "insignificant"
+    },
+    {
+      "id": "1749295516777",
+      "title": "dasfff",
+      "text": "dasffff",
+      "status": "не выполнено",
+      "importance": "urgent"
     }
   ]
 }

@@ -25,7 +25,7 @@ watchEffect(() => {
     urgentTasks.value = [];
     insignificantTasks.value = [];
     sortTasks(
-      allTasks.value,
+      props.tasks,
       importantTasks.value,
       urgentTasks.value,
       insignificantTasks.value
