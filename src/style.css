@@ -8,12 +8,15 @@
   color: rgb(240, 240, 240);
 }
 
-body {
+.body {
   min-height: 100vh;
   /* background: linear-gradient(rgb(145, 145, 145), rgb(178, 178, 178)); */
-  background-image: url(./app/assets/8e2ac824-f4ae-467b-9291-81209c7163b7.jpg);
+  background: url(./app/assets/8e2ac824-f4ae-467b-9291-81209c7163b7.jpg);
   background-size: cover;
   background-repeat: no-repeat;
+}
+.body-dark-theme {
+  background: red;
 }
 
 html {
