@@ -9,5 +9,5 @@ export const getCompletedTasks = async () => {
     return res.data;
   });
 
-  return { data };
+  return data;
 };

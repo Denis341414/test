@@ -9,6 +9,7 @@ import { sortTasks } from "../utils";
 import { useTaskPanelStore } from "../model";
 import { deleteTask } from "@entities/deleteTask";
 import { EndpointsEnum } from "@shared/api";
+import { useUserProfileStore } from "@entities/userProfile";
 
 const props = defineProps<{
   tasks: ITask[];
@@ -16,6 +17,8 @@ const props = defineProps<{
 const { importantTasks, urgentTasks, insignificantTasks } = storeToRefs(
   useTaskPanelStore()
 );
+
+const { userCurrent } = storeToRefs(useUserProfileStore());
 
 const { completeTheTask, allTasks } = storeToRefs(useTasksStore());
 
@@ -57,7 +60,7 @@ watchEffect(() => {
             await deleteTask(el, importantTasks, EndpointsEnum.MYTASKS)
         "
         :execute-task="
-          () => completedTheTask(completeTheTask, el, importantTasks, allTasks)
+          () => completedTheTask(el, importantTasks, userCurrent.uid)
         "
       />
       <div v-else class="tasks-empty text-xl w-28 !mt-10">Задач нет</div>
@@ -76,9 +79,7 @@ watchEffect(() => {
         :delete-task="
           async () => await deleteTask(el, urgentTasks, EndpointsEnum.MYTASKS)
         "
-        :execute-task="
-          () => completedTheTask(completeTheTask, el, urgentTasks, allTasks)
-        "
+        :execute-task="() => completedTheTask(el, urgentTasks, userCurrent.uid)"
       />
       <div v-else class="tasks-empty text-xl w-28 !mt-10">Задач нет</div>
     </div>
@@ -98,8 +99,7 @@ watchEffect(() => {
             await deleteTask(el, insignificantTasks, EndpointsEnum.MYTASKS)
         "
         :execute-task="
-          () =>
-            completedTheTask(completeTheTask, el, insignificantTasks, allTasks)
+          () => completedTheTask(el, insignificantTasks, userCurrent.uid)
         "
       />
       <div v-else class="tasks-empty text-xl w-28 !mt-10">Задач нет</div>

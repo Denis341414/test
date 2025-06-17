@@ -12,12 +12,12 @@ console.log(router.path);
   <Header v-if="router.name !== 'auth' && router.name !== 'regist'" />
   <Drawer v-if="router.name !== 'auth' && router.name !== 'regist'" />
   <div
-    class="cont transition-all !pt-18 !p-8"
+    class="container transition-all !pt-18 !p-8"
     :class="useDrawerStore().visible === true ? '!blur-sm' : ''"
   >
     <router-view v-slot="{ Component }">
       <Transition name="fade" mode="out-in">
-        <div>
+        <div class="">
           <component :is="Component" />
         </div>
       </Transition>

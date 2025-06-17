@@ -3,22 +3,21 @@ import { ITask } from "@shared/types";
 import { deleteTask } from "@entities/deleteTask";
 
 export const completedTheTask = async (
-  tasksCompleted: ITask[],
   task: ITask,
   tasksNow: ITask[],
-  allTasks: ITask[]
+  uidUser: string
 ) => {
   try {
-    tasksCompleted.push(task);
     await ApiClient<ResponseType>({
       url: `${EndpointsEnum.COMPLETETASKS}`,
       method: "POST",
       data: {
-        id: String(Date.now()), // использовать Date + id пользователя в конкатенации
+        id: String(Date.now()),
         title: task.title,
         text: task.text,
         status: task.status,
         importance: task.importance,
+        uidUser: uidUser,
       },
     });
     // tasksNow.splice(tasksNow.indexOf(task), 1);

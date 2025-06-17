@@ -1,7 +1,20 @@
 <script setup lang="ts">
 import { useUserProfileStore } from "@entities/userProfile";
 import { storeToRefs } from "pinia";
-const { userCurrent } = storeToRefs(useUserProfileStore());
+const { userCurrent, myTasks, myCompletedTasks } = storeToRefs(
+  useUserProfileStore()
+);
+import pieChart from "./pie-chart.vue";
+import { onMounted } from "vue";
+import { getMyTasks } from "@entities/getMyTasks";
+import { getCompletedTasks } from "@entities/getCompletedTasks";
+
+onMounted(async () => {
+  myTasks.value = await getMyTasks(userCurrent.value.uid);
+  myCompletedTasks.value = (await getCompletedTasks()).filter(
+    (el) => el.id === userCurrent.value.uid
+  );
+});
 </script>
 
 <template>
@@ -32,8 +45,20 @@ const { userCurrent } = storeToRefs(useUserProfileStore());
       </div>
     </div>
     <div
-      class="card-information !p-10 flex-1 !bg-green-700 opacity-70 rounded-2xl"
-    ></div>
+      class="container-information !p-10 flex-1 !bg-green-700 opacity-70 rounded-2xl"
+    >
+      <div class="statistics">
+        <div class="inf-completed-tasks">Выполнено задач: 9999999</div>
+        <div class="inf-active-tasks">Активные задачи: 9999999</div>
+        <div class="inf-activity">Активность: 9999999</div>
+        <div class="inf-last-task-completion-time">
+          Время последнего выполнения: 9999999
+        </div>
+      </div>
+      <div class="chart-js">
+        <pieChart />
+      </div>
+    </div>
   </div>
 </template>
 

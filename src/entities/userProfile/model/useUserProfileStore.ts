@@ -1,5 +1,5 @@
 import { localStorageKeys } from "@pages/signin/keys";
-import { UserCurrent } from "@shared/types";
+import { ITask, UserCurrent } from "@shared/types";
 import { defineStore } from "pinia";
 import { computed, ref } from "vue";
 
@@ -28,5 +28,8 @@ export const useUserProfileStore = defineStore("userProfile", () => {
     },
   });
 
-  return { userCurrent, username };
+  const myCompletedTasks = ref<ITask[]>([]);
+  const myTasks = ref<ITask[]>([]);
+
+  return { userCurrent, username, myCompletedTasks, myTasks };
 });
