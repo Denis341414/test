@@ -26,7 +26,7 @@ import { Transition } from "vue";
 }
 @media (max-width: 1025px) {
   .container-signin {
-    width: 30vw;
+    width: 50vw;
   }
 }
 
@@ -40,7 +40,7 @@ import { Transition } from "vue";
 @media (max-width: 600px) {
   .container-signin {
     width: 70vw;
-    height: 40vh;
+    height: 50vh;
   }
 }
 

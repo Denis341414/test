@@ -67,4 +67,31 @@ onAuthStateChanged(auth, (user) => {
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+@media (max-width: 1025px) {
+  .container-signin {
+    width: 30vw;
+  }
+}
+
+@media (max-width: 800px) {
+  .container-signin {
+    width: 40vw;
+    height: 50vh;
+  }
+}
+
+@media (max-width: 600px) {
+  .container-signin {
+    width: 70vw;
+    height: 40vh;
+  }
+}
+
+@media (max-width: 400px) {
+  .container-signin {
+    width: 100vw;
+    height: 60vh;
+  }
+}
+</style>
