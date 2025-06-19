@@ -12,7 +12,7 @@ console.log(router.path);
   <Header v-if="router.name !== 'auth' && router.name !== 'regist'" />
   <Drawer v-if="router.name !== 'auth' && router.name !== 'regist'" />
   <div
-    class="container transition-all !pt-18 !p-8"
+    class="transition-all !pt-18 !p-8"
     :class="useDrawerStore().visible === true ? '!blur-sm' : ''"
   >
     <router-view v-slot="{ Component }">

@@ -18,7 +18,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="container !p-20 flex gap-4">
+  <div class="!p-20 flex gap-4">
     <div
       class="card-user flex flex-col gap-10 !p-10 !bg-green-700 opacity-80 rounded-2xl"
     >

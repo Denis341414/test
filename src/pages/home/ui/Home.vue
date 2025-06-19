@@ -13,7 +13,7 @@ const { userCurrent } = storeToRefs(useUserProfileStore());
 
 onMounted(async () => {
   myTasks.value = await getMyTasks(userCurrent.value.uid);
-  completeTheTask.value = (await getCompletedTasks()).data;
+  completeTheTask.value = await getCompletedTasks();
   console.log(completeTheTask.value);
   console.log(myTasks.value);
   console.log(await getMyTasks(userCurrent.value.uid));
@@ -22,7 +22,7 @@ onMounted(async () => {
 
 <template>
   <h1 class="text-3xl text-center !p-10 !text-gray-500">Задачи на сегодня</h1>
-  <div class="container !p-10 !grid grid-cols-4">
+  <div class="!p-10 !grid grid-cols-4">
     <TaskPanel :tasks="myTasks" />
   </div>
 </template>

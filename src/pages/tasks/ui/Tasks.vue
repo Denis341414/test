@@ -21,7 +21,7 @@ const { userCurrent } = storeToRefs(useUserProfileStore());
 
 onMounted(async () => {
   allTasks.value = (await getAllTasks()).tasks;
-  completeTheTask.value = (await getCompletedTasks()).data;
+  completeTheTask.value = await getCompletedTasks();
   console.log(completeTheTask.value);
   console.log(allTasks.value);
 });
@@ -40,7 +40,7 @@ const test = async () => {
 </script>
 
 <template>
-  <div class="container">
+  <div class="container-tasks">
     <FormTask
       :func="
         () => {
@@ -49,7 +49,7 @@ const test = async () => {
       "
       :lable="'Сохранить'"
     />
-    <div class="container !p-10 !grid grid-cols-4 gap-16">
+    <div class="!p-10 !grid grid-cols-4 gap-16">
       <TaskPanel :tasks="allTasks" />
     </div>
   </div>

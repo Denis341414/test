@@ -39,7 +39,7 @@ watchEffect(() => {
 
 <template>
   <div
-    class="container task-categories grid grid-cols-3 gap-[30vw] !p-10"
+    class="task-categories grid grid-cols-3 gap-[30vw] !p-10"
     v-if="props.tasks.length"
   >
     <div class="task-important" @dragover.prevent @dragenter.prevent>
