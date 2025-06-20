@@ -14,7 +14,9 @@ initializeApp(firebaseConfig);
 
 const app = createApp(App);
 app.use(PrimeVue, {
-  theme: Aura,
+  theme: {
+    preset: Aura,
+  },
 });
 app.use(router);
 app.use(pinia);

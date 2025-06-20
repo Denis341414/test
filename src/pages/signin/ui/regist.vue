@@ -6,11 +6,14 @@ import { registUser } from "@entities/registUser/model/registUser";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useUserProfileStore } from "@entities/userProfile";
 import { useRouter } from "vue-router";
+import { ProgressSpinner } from "primevue";
+import { ref } from "vue";
 
 const { email, password, repeatPassword, name } = storeToRefs(useRegistStore());
 const { userCurrent } = storeToRefs(useUserProfileStore());
 const router = useRouter();
 const auth = getAuth();
+const loader = ref(false);
 
 onAuthStateChanged(auth, (user) => {
   if (user) {
@@ -22,6 +25,16 @@ onAuthStateChanged(auth, (user) => {
   } else {
   }
 });
+const regUser = async () => {
+  await registUser(
+    email.value,
+    password.value,
+    repeatPassword.value,
+    name.value,
+    auth,
+    loader
+  );
+};
 </script>
 
 <template>
@@ -56,9 +69,18 @@ onAuthStateChanged(auth, (user) => {
     </div>
 
     <div class="buttons flex flex-col">
+      <ProgressSpinner
+        v-if="loader"
+        style="width: 50px; height: 50px"
+        strokeWidth="8"
+        fill="transparent"
+        animationDuration=".5s"
+        aria-label="Custom ProgressSpinner"
+      />
       <ButtonSignIn
+        v-else
         :lable="'Зарегистрироваться'"
-        :func="() => registUser(email, password, repeatPassword, name, auth)"
+        :func="() => regUser()"
       />
       <router-link to="auth">
         <ButtonSignIn :lable="'Вход'" />

@@ -5,14 +5,17 @@ import {
   createUserWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
+import { Ref } from "vue";
 
 export const registUser = async (
   email: string,
   password: string,
   repPassword: string,
   name: string,
-  auth: Auth
+  auth: Auth,
+  loader: Ref<boolean>
 ) => {
+  loader.value = true;
   try {
     if (password !== repPassword) {
       alert("Пароли не совпадают");
@@ -26,5 +29,7 @@ export const registUser = async (
   } catch (error) {
     console.log("ERROR :", error);
     throw error;
+  } finally {
+    loader.value = false;
   }
 };
