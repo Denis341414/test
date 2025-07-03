@@ -4,12 +4,13 @@ import { useTasksStore } from "@entities/Tasks/model/tasksStore";
 import { storeToRefs } from "pinia";
 import { completedTheTask } from "@entities/completeTheTask";
 import { ITask } from "@shared/types";
-import { watchEffect } from "vue";
+import { onMounted, onUpdated, watchEffect } from "vue";
 import { sortTasks } from "../utils";
 import { useTaskPanelStore } from "../model";
 import { deleteTask } from "@entities/deleteTask";
 import { EndpointsEnum } from "@shared/api";
 import { useUserProfileStore } from "@entities/userProfile";
+import { dragStart, onDrop } from "../utils";
 
 const props = defineProps<{
   tasks: ITask[];
@@ -20,32 +21,36 @@ const { importantTasks, urgentTasks, insignificantTasks } = storeToRefs(
 
 const { userCurrent } = storeToRefs(useUserProfileStore());
 
-const { completeTheTask, allTasks } = storeToRefs(useTasksStore());
+const { allTasks } = storeToRefs(useTasksStore());
 
 watchEffect(() => {
-  setTimeout(() => {
-    importantTasks.value = [];
-    urgentTasks.value = [];
-    insignificantTasks.value = [];
-    sortTasks(
-      props.tasks,
-      importantTasks.value,
-      urgentTasks.value,
-      insignificantTasks.value
-    );
-  }, 100);
+  importantTasks.value = [];
+  urgentTasks.value = [];
+  insignificantTasks.value = [];
+  sortTasks(
+    props.tasks,
+    importantTasks.value,
+    urgentTasks.value,
+    insignificantTasks.value
+  );
 });
 </script>
 
 <template>
   <div
-    class="task-categories grid grid-cols-3 gap-[30vw] !p-10"
+    class="tasks-categories grid grid-cols-3 gap-[30vw] !p-10"
     v-if="props.tasks.length"
   >
-    <div class="task-important" @dragover.prevent @dragenter.prevent>
+    <div
+      class="tasks-container task-important"
+      @dragover.prevent
+      @dragenter.prevent
+      @drop="onDrop($event, 'important', props.tasks)"
+    >
       <div class="text-3xl font-bold !text-gray-500">Important</div>
       <Card
-        draggable
+        @dragstart="dragStart($event, el)"
+        draggable="true"
         :color="'bg-gray-800 '"
         v-if="importantTasks.length"
         v-for="el in importantTasks"
@@ -65,9 +70,16 @@ watchEffect(() => {
       />
       <div v-else class="tasks-empty text-xl w-28 !mt-10">Задач нет</div>
     </div>
-    <div class="task-urgent">
+    <div
+      class="tasks-container task-urgent"
+      @dragover.prevent
+      @dragenter.prevent
+      @drop="onDrop($event, 'urgent', props.tasks)"
+    >
       <div class="text-3xl font-bold !text-gray-500">Urgent</div>
       <Card
+        @dragstart="dragStart($event, el)"
+        draggable="true"
         v-if="urgentTasks.length"
         v-for="el in urgentTasks"
         :key="el.id"
@@ -83,9 +95,16 @@ watchEffect(() => {
       />
       <div v-else class="tasks-empty text-xl w-28 !mt-10">Задач нет</div>
     </div>
-    <div class="task-insignificant">
+    <div
+      class="tasks-container task-insignificant"
+      @dragover.prevent
+      @dragenter.prevent
+      @drop="onDrop($event, 'insignificant', props.tasks)"
+    >
       <div class="text-3xl font-bold !text-gray-500">Insignificant</div>
       <Card
+        @dragstart="dragStart($event, el)"
+        draggable="true"
         v-if="insignificantTasks.length"
         v-for="el in insignificantTasks"
         :key="el.id"
@@ -111,4 +130,9 @@ watchEffect(() => {
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.tasks-container {
+  min-width: 320px;
+  padding: 1em;
+}
+</style>

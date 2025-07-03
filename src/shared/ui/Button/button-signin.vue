@@ -9,7 +9,7 @@ const props = defineProps<{
 
 <template>
   <Button
-    class="btn-signin !p-1 !px-4 !rounded-sm !transition-all w-[10vw] hover:!bg-green-600"
+    class="btn-signin !p-1 !rounded-sm !transition-all w-[9vw] !bg-green-400 !border-none hover:!bg-green-600 !m-1"
     @click="props.func"
     >{{ props.lable }}</Button
   >

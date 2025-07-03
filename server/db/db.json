@@ -1,159 +1,46 @@
 {
   "tasks": [
     {
-      "id": "1749131937728",
-      "title": "fasff",
-      "text": "asfff",
-      "status": "не выполнено",
-      "importance": "urgent",
-      "uid": "BJbOcBBi0mcLYYkuLUe6KANRgGi2"
-    },
-    {
-      "id": "1749131942625",
-      "title": "fasff",
-      "text": "asfff",
-      "status": "не выполнено",
-      "importance": "insignificant",
-      "uid": "BJbOcBBi0mcLYYkuLUe6KANRgGi2"
-    },
-    {
-      "id": "1749644798667",
-      "title": "asffffffasf",
-      "text": "asfffff",
-      "status": "не выполнено",
-      "importance": "urgent",
-      "uidUser": "zbXj0l2W6Xciqfh1n5DIJPJ0Gcj2"
-    },
-    {
-      "id": "1750100886062",
-      "title": "asfff",
-      "text": "safff",
+      "id": "1751553834318",
+      "title": "Реализация ui библиотеки",
+      "text": "Настройка конфига и подключение всех зависимостей необходимых для работы библиотеки",
       "status": "не выполнено",
       "importance": "important",
-      "uidUser": "zbXj0l2W6Xciqfh1n5DIJPJ0Gcj2"
+      "uidUser": "BJbOcBBi0mcLYYkuLUe6KANRgGi2"
+    },
+    {
+      "id": "1751554218672",
+      "title": "ff",
+      "text": "asfdf",
+      "status": "не выполнено",
+      "importance": "urgent",
+      "uidUser": "BJbOcBBi0mcLYYkuLUe6KANRgGi2"
+    },
+    {
+      "id": "1751554223357",
+      "title": "ff",
+      "text": "asfdf",
+      "status": "не выполнено",
+      "importance": "important",
+      "uidUser": "BJbOcBBi0mcLYYkuLUe6KANRgGi2"
+    },
+    {
+      "id": "1751554233788",
+      "title": "d",
+      "text": "dd",
+      "status": "не выполнено",
+      "importance": "important",
+      "uidUser": "BJbOcBBi0mcLYYkuLUe6KANRgGi2"
     }
   ],
   "mytasks": [],
   "completedTasks": [
     {
-      "id": "1749131504979",
-      "title": "Обновить favicon",
-      "text": "Заменить иконку в браузере",
-      "status": "в процессе",
-      "importance": "insignificant"
-    },
-    {
-      "id": "1749131926492",
-      "title": "Обновить favicon",
-      "text": "Заменить иконку в браузере",
-      "status": "в процессе",
-      "importance": "insignificant"
-    },
-    {
-      "id": "1749131946411",
-      "title": "afsdasgf",
-      "text": "asddddddddd",
-      "status": "не выполнено",
-      "importance": "important"
-    },
-    {
-      "id": "1749131947958",
-      "title": "afsdasgf",
-      "text": "asdddddddddfasd",
-      "status": "не выполнено",
-      "importance": "important"
-    },
-    {
-      "id": "1749295511861",
-      "title": "asfdgdfdasf",
-      "text": "asfdfdfdf",
-      "status": "не выполнено",
-      "importance": "insignificant"
-    },
-    {
-      "id": "1749295516777",
-      "title": "dasfff",
-      "text": "dasffff",
-      "status": "не выполнено",
-      "importance": "urgent"
-    },
-    {
-      "id": "1749301860651",
-      "title": "ffffffff",
-      "text": "fffffff",
-      "status": "не выполнено",
-      "importance": "important"
-    },
-    {
-      "id": "1750195734117",
-      "title": "asfdf",
-      "text": "fff",
+      "id": "1751553862646",
+      "title": "Реализация ui библиотеки",
+      "text": "Настройка конфига и подключение всех зависимостей необходимых для работы библиотеки",
       "status": "не выполнено",
       "importance": "important",
-      "uidUser": "BJbOcBBi0mcLYYkuLUe6KANRgGi2"
-    },
-    {
-      "id": "1750195736584",
-      "title": "fffff",
-      "text": "asffff",
-      "status": "не выполнено",
-      "importance": "urgent",
-      "uidUser": "BJbOcBBi0mcLYYkuLUe6KANRgGi2"
-    },
-    {
-      "id": "1750195841347",
-      "title": "fffff",
-      "text": "asffff",
-      "status": "не выполнено",
-      "importance": "urgent",
-      "uidUser": "BJbOcBBi0mcLYYkuLUe6KANRgGi2"
-    },
-    {
-      "id": "1750195865315",
-      "title": "asfdf",
-      "text": "fff",
-      "status": "не выполнено",
-      "importance": "important",
-      "uidUser": "BJbOcBBi0mcLYYkuLUe6KANRgGi2"
-    },
-    {
-      "id": "1750195941907",
-      "title": "asfdf",
-      "text": "fff",
-      "status": "не выполнено",
-      "importance": "important",
-      "uidUser": "BJbOcBBi0mcLYYkuLUe6KANRgGi2"
-    },
-    {
-      "id": "1750195945500",
-      "title": "asfdf",
-      "text": "fff",
-      "status": "не выполнено",
-      "importance": "important",
-      "uidUser": "BJbOcBBi0mcLYYkuLUe6KANRgGi2"
-    },
-    {
-      "id": "1750195947373",
-      "title": "asfdf",
-      "text": "fff",
-      "status": "не выполнено",
-      "importance": "important",
-      "uidUser": "BJbOcBBi0mcLYYkuLUe6KANRgGi2"
-    },
-    {
-      "id": "1750195957153",
-      "title": "fffff",
-      "text": "asffff",
-      "status": "не выполнено",
-      "importance": "urgent",
-      "uidUser": "BJbOcBBi0mcLYYkuLUe6KANRgGi2"
-    },
-    {
-      "id": "1750329192560",
-      "title": "ffff",
-      "text": "fasd",
-      "status": "не выполнено",
-      "importance": "urgent",
       "uidUser": "BJbOcBBi0mcLYYkuLUe6KANRgGi2"
     }
   ]

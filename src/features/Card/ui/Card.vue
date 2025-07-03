@@ -19,8 +19,6 @@ const props = defineProps<{
   color?: string;
 }>();
 const router = useRoute();
-
-const colors = ref(["bg-green-800", "bg-gray-600", "bg-green-700"]);
 </script>
 
 <template>
@@ -43,7 +41,7 @@ const colors = ref(["bg-green-800", "bg-gray-600", "bg-green-700"]);
         </p>
       </template>
       <template #footer>
-        <div class="flex gap-4 !mt-6">
+        <div class="flex w-full gap-4 !mt-6">
           <ButtonCard
             v-if="router.name !== 'Tasks'"
             :func="props.deleteTask"

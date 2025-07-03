@@ -7,9 +7,7 @@ export const addInMyTask = async (
   text: string,
   importance: string,
   uid: string,
-  imptasks: ITask[],
-  urgtasks: ITask[],
-  instasks: ITask[]
+  tasks: ITask[]
 ) => {
   if (validateTask(title, text)) {
     console.log(validateTask(title, text));
@@ -26,20 +24,10 @@ export const addInMyTask = async (
         uidUser: uid,
       },
     }).then((response) => {
+      tasks.push(response.data);
       return response.data;
     });
 
-    switch (importance) {
-      case "important":
-        imptasks.push(data);
-        break;
-      case "urgent":
-        urgtasks.push(data);
-        break;
-      case "insignificant":
-        instasks.push(data);
-        break;
-    }
     title = "";
     text = "";
   }

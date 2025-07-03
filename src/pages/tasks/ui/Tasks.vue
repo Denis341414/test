@@ -32,9 +32,7 @@ const test = async () => {
     text.value,
     importanceItem.value,
     userCurrent.value.uid,
-    importantTasks.value,
-    urgentTasks.value,
-    insignificantTasks.value
+    allTasks.value
   );
 };
 </script>
@@ -43,8 +41,8 @@ const test = async () => {
   <div class="container-tasks">
     <FormTask
       :func="
-        () => {
-          test();
+        async () => {
+          await test();
         }
       "
       :lable="'Сохранить'"

@@ -28,7 +28,7 @@ const showDialog = () => {
 </script>
 
 <template>
-  <ButtonCard :label="'Редактировать'" :func="showDialog" />
+  <ButtonCard class="!w-[13vw]" :label="'Редактировать'" :func="showDialog" />
 
   <Dialog
     v-model:visible="visibleDialog"
