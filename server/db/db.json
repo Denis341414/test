@@ -5,7 +5,7 @@
       "title": "Реализация ui библиотеки",
       "text": "Настройка конфига и подключение всех зависимостей необходимых для работы библиотеки",
       "status": "не выполнено",
-      "importance": "important",
+      "importance": "insignificant",
       "uidUser": "BJbOcBBi0mcLYYkuLUe6KANRgGi2"
     },
     {
@@ -29,7 +29,7 @@
       "title": "d",
       "text": "dd",
       "status": "не выполнено",
-      "importance": "important",
+      "importance": "urgent",
       "uidUser": "BJbOcBBi0mcLYYkuLUe6KANRgGi2"
     }
   ],

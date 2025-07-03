@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import FormTask from "@features/FormTask/ui/FormTask.vue";
-import { TaskPanel, useTaskPanelStore } from "@widgets/TaskPanel";
+import { TaskPanel } from "@widgets/TaskPanel";
 import { useTasksStore } from "@entities/Tasks/model/tasksStore";
 import { storeToRefs } from "pinia";
 import { onMounted } from "vue";
@@ -13,9 +13,6 @@ import { useUserProfileStore } from "@entities/userProfile";
 
 const { title, text, importanceItem } = storeToRefs(useFormTaskStore());
 const { completeTheTask, allTasks } = storeToRefs(useTasksStore());
-const { importantTasks, urgentTasks, insignificantTasks } = storeToRefs(
-  useTaskPanelStore()
-);
 
 const { userCurrent } = storeToRefs(useUserProfileStore());
 
