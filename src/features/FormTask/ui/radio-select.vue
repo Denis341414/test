@@ -13,16 +13,16 @@ watch(importanceItem, () => {
 
 <template>
   <div class="flex flex-wrap gap-4">
-    <div class="flex items-center gap-2">
+    <div class="flex items-center gap-6">
       <RadioButton
         v-model="importanceItem"
         inputId="importance1"
         name="importance"
         value="important"
-        class="!bg-green-500 !w-4 !h-4 rounded-3xl"
+        class="!bg-green-300 !w-4 !h-4 rounded-3xl"
         :class="importanceItem === 'important' ? '!bg-green-700' : ''"
       />
-      <label for="ingredient1">important</label>
+      <label for="ingredient1" class="!text-gray-700">important</label>
     </div>
     <div class="flex items-center gap-2">
       <RadioButton
@@ -33,7 +33,7 @@ watch(importanceItem, () => {
         class="!bg-green-500 !w-4 !h-4 rounded-3xl"
         :class="importanceItem === 'urgent' ? '!bg-green-700' : ''"
       />
-      <label for="ingredient2">urgent</label>
+      <label for="ingredient2" class="!text-gray-700">urgent</label>
     </div>
     <div class="flex items-center gap-2">
       <RadioButton
@@ -44,7 +44,7 @@ watch(importanceItem, () => {
         class="!bg-green-500 !w-4 !h-4 rounded-3xl"
         :class="importanceItem === 'insignificant' ? '!bg-green-700' : ''"
       />
-      <label for="ingredient3">insignificant</label>
+      <label for="ingredient3" class="!text-gray-700">insignificant</label>
     </div>
   </div>
 </template>

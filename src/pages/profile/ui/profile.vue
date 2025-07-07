@@ -5,6 +5,7 @@ const { userCurrent, myTasks, myCompletedTasks } = storeToRefs(
   useUserProfileStore()
 );
 import pieChart from "./pie-chart.vue";
+import lineChart from "./line-chart.vue";
 import { onMounted } from "vue";
 import { getMyTasks } from "@entities/getMyTasks";
 import { getCompletedTasks } from "@entities/getCompletedTasks";
@@ -18,7 +19,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="!p-20 flex gap-4">
+  <div class="!p-20 flex gap-4 h-max">
     <div
       class="card-user flex flex-col gap-10 !p-10 !bg-green-700 opacity-80 rounded-2xl"
     >
@@ -55,8 +56,9 @@ onMounted(async () => {
           Время последнего выполнения: 9999999
         </div>
       </div>
-      <div class="chart-js">
+      <div class="chart-js max-h-100 max-w-100 flex">
         <pieChart />
+        <lineChart />
       </div>
     </div>
   </div>

@@ -59,8 +59,6 @@ const options = {
   },
 };
 
-const chartRef = ref();
-
 const updateChartData = () => {
   chartData.datasets[0].data = [
     myCompletedTasks.value.length,

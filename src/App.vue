@@ -3,9 +3,10 @@ import { Drawer, useDrawerStore } from "@widgets/Drawer";
 import { Header } from "@widgets/Header";
 
 import { useRoute } from "vue-router";
+const date = new Date().getMonth();
 
 const router = useRoute();
-console.log(router.path);
+console.log(date + 1);
 </script>
 
 <template>
