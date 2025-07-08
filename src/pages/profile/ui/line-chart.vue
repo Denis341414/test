@@ -35,7 +35,7 @@ const data = {
       label: "Data One",
       backgroundColor: "#fff",
       borderColor: "#E46651",
-      data: <number[]>[],
+      data: <number[]>[1, 4, 5, 2],
     },
   ],
 };
@@ -90,6 +90,7 @@ const getData = () => {
   for (let i of data.labels) {
     const counter = ref(0);
     for (let j of myTasks.value) {
+      console.log(formatDate(i));
       if (getMonthNumberFromName(formatDate(j.id)) >= Number(formatDate(i))) {
         counter.value++;
         console.log(counter.value);
@@ -108,7 +109,7 @@ onMounted(() => {
 
     data.labels.push(currentMonth);
   }
-  getData();
+  // getData();
 });
 </script>
 

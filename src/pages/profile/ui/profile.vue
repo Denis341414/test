@@ -6,15 +6,35 @@ const { userCurrent, myTasks, myCompletedTasks } = storeToRefs(
 );
 import pieChart from "./pie-chart.vue";
 import lineChart from "./line-chart.vue";
-import { onMounted } from "vue";
+import { onMounted, Ref, ref } from "vue";
 import { getMyTasks } from "@entities/getMyTasks";
 import { getCompletedTasks } from "@entities/getCompletedTasks";
+
+const activity = ref(0);
+const lastExecutionTime: Ref<Date | undefined> = ref();
 
 onMounted(async () => {
   myTasks.value = await getMyTasks(userCurrent.value.uid);
   myCompletedTasks.value = (await getCompletedTasks()).filter(
     (el) => el.id === userCurrent.value.uid
   );
+});
+
+onMounted(async () => {
+  try {
+    myTasks.value = await getMyTasks(userCurrent.value.uid);
+    myCompletedTasks.value = await getCompletedTasks();
+    console.log("Мои задания:", myTasks.value);
+    console.log("Завершенные задания:", myCompletedTasks.value);
+    activity.value = Number(
+      myCompletedTasks.value.length / myTasks.value.length
+    );
+    lastExecutionTime.value = new Date(
+      Number(myCompletedTasks.value[myCompletedTasks.value.length - 1].id)
+    );
+  } catch (error) {
+    console.error("Ошибка загрузки данных:", error);
+  }
 });
 </script>
 
@@ -49,11 +69,15 @@ onMounted(async () => {
       class="container-information !p-10 flex-1 !bg-green-700 opacity-70 rounded-2xl"
     >
       <div class="statistics">
-        <div class="inf-completed-tasks">Выполнено задач: 9999999</div>
-        <div class="inf-active-tasks">Активные задачи: 9999999</div>
-        <div class="inf-activity">Активность: 9999999</div>
+        <div class="inf-completed-tasks">
+          Выполнено задач: {{ myCompletedTasks.length }}
+        </div>
+        <div class="inf-active-tasks">
+          Активные задачи: {{ myTasks.length }}
+        </div>
+        <div class="inf-activity">Активность: {{ activity }}</div>
         <div class="inf-last-task-completion-time">
-          Время последнего выполнения: 9999999
+          Время последнего выполнения: {{ lastExecutionTime }}
         </div>
       </div>
       <div class="chart-js max-h-100 max-w-100 flex">
